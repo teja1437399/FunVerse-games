@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNVERSE | TEJA Gaming World</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  color:white;
+  background:radial-gradient(circle at top,#30205c,#090b19 65%);
+  min-height:100vh;
+}
+header{
+  padding:22px 7%;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid #ffffff20;
+}
+.logo{font-size:27px;font-weight:900;letter-spacing:2px}
+.logo span{color:#a88aff}
+header small{color:#b9b1d9}
+.hero{text-align:center;padding:65px 18px 35px}
+.hero h1{font-size:clamp(38px,8vw,68px);margin-bottom:15px}
+.hero h1 span{color:#a88aff}
+.hero p{color:#c3bddb;line-height:1.7}
+.tag{
+ display:inline-block;background:#ffffff12;border:1px solid #a88aff66;
+ padding:9px 17px;border-radius:30px;margin-bottom:22px;color:#d8caff;
+}
+.games{
+ width:min(1050px,90%);margin:30px auto 70px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:23px;
+}
+.card{
+ background:linear-gradient(145deg,#29244a,#15172d);
+ border:1px solid #ffffff20;border-radius:20px;padding:25px;
+ text-align:center;min-height:210px;
+ box-shadow:0 12px 25px #0007;
+ transition:.25s;
+}
+.card:hover{transform:translateY(-8px) scale(1.02);border-color:#a88aff}
+.emoji{font-size:48px;margin-bottom:16px}
+.card h2{font-size:21px;margin-bottom:10px}
+.card p{font-size:13px;color:#bdb6d5;line-height:1.5}
+button{
+ margin-top:20px;padding:12px 23px;border:0;border-radius:30px;
+ background:linear-gradient(100deg,#a88aff,#6e8bff);
+ color:white;font-weight:bold;font-size:14px;cursor:pointer;
+}
+button:active{transform:scale(.96)}
+footer{text-align:center;padding:25px;color:#9992b5;border-top:1px solid #ffffff18}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">FUN<span>VERSE</span></div>
+ <small>YOUR WORLD OF FUN 🎮</small>
+</header>
+<section class="hero">
+ <div class="tag">✦ THE ULTIMATE MINI GAME ZONE ✦</div>
+ <h1>PLAY. <span>ENJOY.</span> REPEAT.</h1>
+ <p>Welcome to your gaming universe.<br>Pick a game and let the fun begin!</p>
+</section>
+<main class="games">
+ <article class="card">
+  <div class="emoji">⭕</div><h2>Tic Tac Toe</h2>
+  <p>Challenge your brain with this classic game.</p>
+  <button onclick="alert('Tic Tac Toe coming soon!')">PLAY NOW</button>
+ </article>
+ <article class="card">
+  <div class="emoji">🐍</div><h2>Snake Game</h2>
+  <p>Eat, grow and beat your own high score.</p>
+  <button onclick="alert('Snake Game coming soon!')">PLAY NOW</button>
+ </article>
+ <article class="card">
+  <div class="emoji">✊</div><h2>Rock Paper Scissors</h2>
+  <p>Can you defeat the computer?</p>
+  <button onclick="alert('Rock Paper Scissors coming soon!')">PLAY NOW</button>
+ </article>
+ <article class="card">
+  <div class="emoji">🧠</div><h2>Memory Challenge</h2>
+  <p>Test your memory and concentration.</p>
+  <button onclick="alert('Memory Challenge coming soon!')">PLAY NOW</button>
+ </article>
+ <article class="card">
+  <div class="emoji">🎡</div><h2>Spin the Wheel</h2>
+  <p>Give it a spin and discover your result.</p>
+  <button onclick="alert('Spin the Wheel coming soon!')">PLAY NOW</button>
+ </article>
+ <article class="card">
+  <div class="emoji">😂</div><h2>Funny Quiz</h2>
+  <p>Try some fun questions with your friends.</p>
+  <button onclick="alert('Funny Quiz coming soon!')">PLAY NOW</button>
+ </article>
+</main>
+<footer>© 2026 FUNVERSE · MADE FOR FUN</footer>
+</body>
+</html>
