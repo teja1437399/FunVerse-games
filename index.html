@@ -506,6 +506,41 @@ pc.addEventListener('pointermove',e=>{
  if(e.buttons||e.pointerType==='touch')pingMove(e);
 });
 pingDraw();
+ // FUNVERSE GAMES SOUND SYSTEM
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSound(freq=500, duration=0.12, type='sine'){
+ if(audioCtx.state==='suspended') audioCtx.resume();
+
+ const osc=audioCtx.createOscillator();
+ const gain=audioCtx.createGain();
+
+ osc.type=type;
+ osc.frequency.value=freq;
+ gain.gain.setValueAtTime(0.15,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+duration);
+
+ osc.connect(gain);
+ gain.connect(audioCtx.destination);
+
+ osc.start();
+ osc.stop(audioCtx.currentTime+duration);
+}
+
+function clickSound(){playSound(500,0.08)}
+function winSound(){
+ playSound(600,0.12);
+ setTimeout(()=>playSound(800,0.15),130);
+}
+function hitSound(){playSound(250,0.08,'square')}
+function laserSound(){playSound(900,0.1,'sawtooth')}
+function matchSound(){playSound(700,0.15)}
+function foodSound(){playSound(450,0.12)}
+document.addEventListener('click', function(e){
+ if(e.target.closest('button')){
+  clickSound();
+ }
+}); 
 </script>
 </body>
 </html>
