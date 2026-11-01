@@ -3,98 +3,172 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FUNVERSE | TEJA Gaming World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUNVERSE | Tic Tac Toe</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 body{
-  font-family:Arial,sans-serif;
-  color:white;
-  background:radial-gradient(circle at top,#30205c,#090b19 65%);
-  min-height:100vh;
+ margin:0;min-height:100vh;padding:20px;
+ font-family:Arial,sans-serif;color:white;text-align:center;
+ background:radial-gradient(circle at top,#48318b,#101020 65%);
 }
-header{
-  padding:22px 7%;
-  display:flex;justify-content:space-between;align-items:center;
-  border-bottom:1px solid #ffffff20;
+.logo{font-size:27px;font-weight:900;letter-spacing:3px;margin:15px}
+.logo span{color:#b99aff}
+.tag{color:#c8b8f5;font-size:12px;letter-spacing:3px;margin:22px}
+h1{font-size:clamp(32px,7vw,48px);margin:12px}
+h1 span{color:#b99aff}
+.sub{color:#c8c1dc;font-size:14px}
+.panel{
+ max-width:430px;margin:28px auto;padding:23px;
+ background:#ffffff0d;border:1px solid #ffffff25;
+ border-radius:24px;box-shadow:0 18px 45px #0007;
 }
-.logo{font-size:27px;font-weight:900;letter-spacing:2px}
-.logo span{color:#a88aff}
-header small{color:#b9b1d9}
-.hero{text-align:center;padding:65px 18px 35px}
-.hero h1{font-size:clamp(38px,8vw,68px);margin-bottom:15px}
-.hero h1 span{color:#a88aff}
-.hero p{color:#c3bddb;line-height:1.7}
-.tag{
- display:inline-block;background:#ffffff12;border:1px solid #a88aff66;
- padding:9px 17px;border-radius:30px;margin-bottom:22px;color:#d8caff;
+.scores{display:flex;justify-content:space-around;margin-bottom:22px}
+.score{background:#ffffff12;padding:13px 20px;border-radius:13px;min-width:105px}
+.score strong{display:block;font-size:27px;margin-top:5px}
+.x{color:#b99aff}.o{color:#65e5ff}
+.status{font-size:17px;font-weight:bold;margin:15px}
+.board{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:10px;width:min(100%,330px);margin:20px auto;
 }
-.games{
- width:min(1050px,90%);margin:30px auto 70px;
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:23px;
+.cell{
+ aspect-ratio:1;border:1px solid #ffffff25;border-radius:15px;
+ background:linear-gradient(145deg,#34305b,#1a1934);
+ box-shadow:5px 5px 12px #0007,-3px -3px 10px #ffffff08;
+ color:white;font-size:clamp(38px,12vw,55px);
+ font-weight:bold;cursor:pointer;
 }
-.card{
- background:linear-gradient(145deg,#29244a,#15172d);
- border:1px solid #ffffff20;border-radius:20px;padding:25px;
- text-align:center;min-height:210px;
- box-shadow:0 12px 25px #0007;
- transition:.25s;
-}
-.card:hover{transform:translateY(-8px) scale(1.02);border-color:#a88aff}
-.emoji{font-size:48px;margin-bottom:16px}
-.card h2{font-size:21px;margin-bottom:10px}
-.card p{font-size:13px;color:#bdb6d5;line-height:1.5}
-button{
- margin-top:20px;padding:12px 23px;border:0;border-radius:30px;
- background:linear-gradient(100deg,#a88aff,#6e8bff);
+.cell:disabled{cursor:default}
+.cell.win{background:linear-gradient(145deg,#6550a5,#29204d);border-color:#c6a9ff}
+button.action{
+ border:0;border-radius:30px;padding:13px 25px;
+ margin:8px;background:linear-gradient(100deg,#a77cff,#648dff);
  color:white;font-weight:bold;font-size:14px;cursor:pointer;
 }
-button:active{transform:scale(.96)}
-footer{text-align:center;padding:25px;color:#9992b5;border-top:1px solid #ffffff18}
+button.action:active{transform:scale(.96)}
+.note{color:#aaa3c5;font-size:12px;margin-top:20px}
+footer{margin-top:35px;color:#aaa3c5;font-size:12px}
 </style>
 </head>
 <body>
-<header>
- <div class="logo">FUN<span>VERSE</span></div>
- <small>YOUR WORLD OF FUN 🎮</small>
-</header>
-<section class="hero">
- <div class="tag">✦ THE ULTIMATE MINI GAME ZONE ✦</div>
- <h1>PLAY. <span>ENJOY.</span> REPEAT.</h1>
- <p>Welcome to your gaming universe.<br>Pick a game and let the fun begin!</p>
-</section>
-<main class="games">
- <article class="card">
-  <div class="emoji">⭕</div><h2>Tic Tac Toe</h2>
-  <p>Challenge your brain with this classic game.</p>
-  <button onclick="alert('Tic Tac Toe coming soon!')">PLAY NOW</button>
- </article>
- <article class="card">
-  <div class="emoji">🐍</div><h2>Snake Game</h2>
-  <p>Eat, grow and beat your own high score.</p>
-  <button onclick="alert('Snake Game coming soon!')">PLAY NOW</button>
- </article>
- <article class="card">
-  <div class="emoji">✊</div><h2>Rock Paper Scissors</h2>
-  <p>Can you defeat the computer?</p>
-  <button onclick="alert('Rock Paper Scissors coming soon!')">PLAY NOW</button>
- </article>
- <article class="card">
-  <div class="emoji">🧠</div><h2>Memory Challenge</h2>
-  <p>Test your memory and concentration.</p>
-  <button onclick="alert('Memory Challenge coming soon!')">PLAY NOW</button>
- </article>
- <article class="card">
-  <div class="emoji">🎡</div><h2>Spin the Wheel</h2>
-  <p>Give it a spin and discover your result.</p>
-  <button onclick="alert('Spin the Wheel coming soon!')">PLAY NOW</button>
- </article>
- <article class="card">
-  <div class="emoji">😂</div><h2>Funny Quiz</h2>
-  <p>Try some fun questions with your friends.</p>
-  <button onclick="alert('Funny Quiz coming soon!')">PLAY NOW</button>
- </article>
-</main>
-<footer>© 2026 FUNVERSE · MADE FOR FUN</footer>
+<div class="logo">FUN<span>VERSE</span></div>
+<div class="tag">✦ MINI GAME ARENA ✦</div>
+<h1>TIC <span>TAC</span> TOE</h1>
+<p class="sub">You are X · Computer is O</p>
+
+<div class="panel">
+ <div class="scores">
+  <div class="score"><span class="x">YOU (X)</span><strong id="you">0</strong></div>
+  <div class="score"><span class="o">CPU (O)</span><strong id="cpu">0</strong></div>
+ </div>
+ <div class="status" id="status">Your turn! Choose a box.</div>
+ <div class="board" id="board">
+  <button class="cell" data-i="0"></button>
+  <button class="cell" data-i="1"></button>
+  <button class="cell" data-i="2"></button>
+  <button class="cell" data-i="3"></button>
+  <button class="cell" data-i="4"></button>
+  <button class="cell" data-i="5"></button>
+  <button class="cell" data-i="6"></button>
+  <button class="cell" data-i="7"></button>
+  <button class="cell" data-i="8"></button>
+ </div>
+ <button class="action" id="restart">↻ RESTART</button>
+ <button class="action" id="reset">RESET SCORE</button>
+ <p class="note">Make three X marks in a row to win!</p>
+</div>
+<footer>© 2026 FUNVERSE · PLAY FOR FUN</footer>
+
+<script>
+const cells=[...document.querySelectorAll(".cell")];
+const statusText=document.getElementById("status");
+const youText=document.getElementById("you");
+const cpuText=document.getElementById("cpu");
+const wins=[[0,1,2],[3,4,5],[6,7,8],
+[0,3,6],[1,4,7],[2,5,8],
+[0,4,8],[2,4,6]];
+let board=Array(9).fill("");
+let you=0,cpu=0,playing=true;
+
+function winner(b){
+ for(const line of wins){
+  if(b[line[0]] && line.every(i=>b[i]===b[line[0]]))
+   return {mark:b[line[0]],line};
+ }
+ return null;
+}
+function draw(){
+ cells.forEach((c,i)=>{
+  c.textContent=board[i];
+  c.className="cell"+(board[i]==="X"?" x":" o");
+  c.disabled=!!board[i]||!playing;
+ });
+ youText.textContent=you;
+ cpuText.textContent=cpu;
+}
+function finish(){
+ const result=winner(board);
+ if(result){
+  playing=false;
+  result.line.forEach(i=>cells[i].classList.add("win"));
+  if(result.mark==="X"){you++;statusText.textContent="🎉 You win! Amazing!";}
+  else {cpu++;statusText.textContent="🤖 Computer wins! Try again!";}
+  draw();return true;
+ }
+ if(board.every(Boolean)){
+  playing=false;statusText.textContent="🤝 It's a draw!";
+  draw();return true;
+ }
+ return false;
+}
+function computerMove(){
+ if(!playing)return;
+ let move=-1;
+ // Try to win
+ for(let i=0;i<9;i++){
+  if(!board[i]){
+   board[i]="O";
+   if(winner(board)){move=i;board[i]="";break;}
+   board[i]="";
+  }
+ }
+ // Block player
+ if(move<0){
+  for(let i=0;i<9;i++){
+   if(!board[i]){
+    board[i]="X";
+    if(winner(board)){move=i;board[i]="";break;}
+    board[i]="";
+   }
+  }
+ }
+ // Otherwise choose a free cell
+ if(move<0){
+  const free=board.map((v,i)=>v? -1:i).filter(i=>i>=0);
+  if(free.length)move=free[Math.floor(Math.random()*free.length)];
+ }
+ if(move>=0){board[move]="O";draw();finish();}
+}
+cells.forEach((cell,i)=>{
+ cell.addEventListener("click",()=>{
+  if(!playing||board[i])return;
+  board[i]="X";draw();
+  if(finish())return;
+  statusText.textContent="Computer is thinking...";
+  setTimeout(computerMove,350);
+ });
+});
+function newGame(){
+ board=Array(9).fill("");playing=true;
+ statusText.textContent="Your turn! Choose a box.";
+ draw();
+}
+document.getElementById("restart").addEventListener("click",newGame);
+document.getElementById("reset").addEventListener("click",()=>{
+ you=0;cpu=0;newGame();
+});
+draw();
+</script>
 </body>
 </html>
