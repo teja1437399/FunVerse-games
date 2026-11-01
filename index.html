@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,18 +28,21 @@ h2{color:#f0d5ff}
 .cell{aspect-ratio:1;background:#ffffff18;border:2px solid #c084fc;border-radius:14px;font-size:42px;color:white;padding:0}
 .cell:disabled{opacity:1}
 canvas{width:100%;max-width:320px;aspect-ratio:1;background:#080d18;border:2px solid #c084fc;border-radius:12px;display:block;margin:15px auto;touch-action:none}
+#shooterCanvas,#pingCanvas{height:auto;aspect-ratio:320/420}
 .choices{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}
 .choices button{font-size:28px;min-width:75px}
 .memory{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:330px;margin:18px auto}
 .card{aspect-ratio:1;background:#542b86;border:2px solid #c084fc;border-radius:12px;font-size:26px;padding:0}
 .small{font-size:13px;color:#d8b4fe}
 select{padding:11px;border-radius:10px;background:#2b1746;color:white;border:1px solid #c084fc;margin:8px}
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px}
+.controls button{min-width:75px}
 footer{padding:25px;color:#cbb4e4;font-size:13px}
 </style>
 </head>
 <body>
 <header>
-<h1> FUNVERSE GAMES</h1>
+<h1>🎮 FUNVERSE GAMES</h1>
 <div class="creator">✨ CREATED BY TEJA ✨</div>
 <p>Play • Challenge • Enjoy!</p>
 </header>
@@ -51,6 +53,8 @@ footer{padding:25px;color:#cbb4e4;font-size:13px}
 <button onclick="show('snake')">🐍 Snake</button>
 <button onclick="show('rps')">✊ RPS</button>
 <button onclick="show('memory')">🧠 Memory</button>
+<button onclick="show('shooter')">🚀 Space Shooter</button>
+<button onclick="show('ping')">🏓 Ping Pong</button>
 <button onclick="show('scores')">🏆 Scores</button>
 </nav>
 
@@ -61,6 +65,8 @@ footer{padding:25px;color:#cbb4e4;font-size:13px}
 <button class="gamecard" onclick="show('snake')"><span class="emoji">🐍</span><h3>Snake Game</h3><p>Swipe and collect food</p></button>
 <button class="gamecard" onclick="show('rps')"><span class="emoji">✊✋✌️</span><h3>Rock Paper Scissors</h3><p>Challenge your friend</p></button>
 <button class="gamecard" onclick="show('memory')"><span class="emoji">🧠</span><h3>Memory Match</h3><p>Find matching cards</p></button>
+<button class="gamecard" onclick="show('shooter')"><span class="emoji">🚀</span><h3>Space Shooter</h3><p>Defend space and score points</p></button>
+<button class="gamecard" onclick="show('ping')"><span class="emoji">🏓</span><h3>Ping Pong</h3><p>Two players on one device</p></button>
 </div>
 <h3>🌟 Daily Challenge</h3>
 <p class="small">Today's challenge: Play a Memory Match game and find all 8 pairs!</p>
@@ -94,15 +100,13 @@ footer{padding:25px;color:#cbb4e4;font-size:13px}
 
 <section class="game" id="rps">
 <h2>✊ Rock Paper Scissors</h2>
-<select id="rMode">
+<select id="rMode" onchange="rReset()">
 <option value="computer">Play vs Computer</option>
 <option value="two">2 Players – Same Device</option>
 </select>
 <p class="status" id="rs">Player 1, choose your move!</p>
 <div class="choices">
-<button onclick="rps('Rock')">✊</button>
-<button onclick="rps('Paper')">✋</button>
-<button onclick="rps('Scissors')">✌️</button>
+<button onclick="rps('Rock')">✊</button><button onclick="rps('Paper')">✋</button><button onclick="rps('Scissors')">✌️</button>
 </div>
 <p class="score" id="rScore">Player 1: 0 | Player 2: 0</p>
 <button onclick="rReset()">🔄 Reset Score</button>
@@ -111,13 +115,35 @@ footer{padding:25px;color:#cbb4e4;font-size:13px}
 <section class="game" id="memory">
 <h2>🧠 Memory Match</h2>
 <select id="mMode">
-<option value="one">Single Player</option>
-<option value="two">2 Players – Same Device</option>
+<option value="one">Single Player</option><option value="two">2 Players – Same Device</option>
 </select>
 <p class="status" id="ms">Find all matching pairs!</p>
 <p class="score" id="mScore">Moves: 0 | Pairs: 0/8</p>
 <div class="memory" id="memoryBoard"></div>
 <button onclick="memoryStart()">🔄 Restart</button>
+</section>
+
+<section class="game" id="shooter">
+<h2>🚀 Space Shooter</h2>
+<p class="status" id="shStatus">Press Start, move your ship and shoot!</p>
+<p class="score">Score: <span id="shScore">0</span> | Lives: <span id="shLives">3</span></p>
+<canvas id="shooterCanvas" width="320" height="420"></canvas>
+<p class="small">Use ◀ ▶ to move and FIRE to shoot. You can also drag your ship.</p>
+<div class="controls">
+<button onpointerdown="shMove(-1)" onpointerup="shStop()" onpointerleave="shStop()" onpointercancel="shStop()">◀ LEFT</button>
+<button onclick="shFire()">🔥 FIRE</button>
+<button onpointerdown="shMove(1)" onpointerup="shStop()" onpointerleave="shStop()" onpointercancel="shStop()">RIGHT ▶</button>
+</div>
+<button onclick="shStart()">▶ Start / Restart</button>
+</section>
+
+<section class="game" id="ping">
+<h2>🏓 Ping Pong</h2>
+<p class="status" id="pingStatus">Two players: touch your half of the court to move your paddle.</p>
+<p class="score" id="pingScore">Player 1: 0 | Player 2: 0</p>
+<canvas id="pingCanvas" width="320" height="420"></canvas>
+<p class="small">Player 1 controls the bottom paddle. Player 2 controls the top paddle. First to 5 wins!</p>
+<button onclick="pingStart()">▶ Start / Restart</button>
 </section>
 
 <section class="game" id="scores">
@@ -130,33 +156,43 @@ footer{padding:25px;color:#cbb4e4;font-size:13px}
 <footer>Made with 💜 by TEJA<br>© 2026 FUNVERSE GAMES</footer>
 
 <script>
-function show(id){
+ function show(id){
  document.querySelectorAll('.game').forEach(g=>g.classList.remove('active'));
  document.getElementById(id).classList.add('active');
  if(id==='snake')snakeDraw();
  if(id==='scores')scorePage();
+ if(id==='shooter')shDraw();
+ if(id==='ping')pingDraw();
 }
 function home(){show('home')}
 function getBest(k){return Number(localStorage.getItem(k)||0)}
 function saveBest(k,v){if(v>getBest(k))localStorage.setItem(k,v)}
 function scorePage(){
  document.getElementById('allScores').innerHTML=
- '🐍 Snake Best: '+getBest('snakeBest')+'<br><br>🧠 Memory Best Pairs: '+getBest('memoryBest')+'/8';
+ '🐍 Snake Best: '+getBest('snakeBest')+
+ '<br><br>🧠 Memory Best Pairs: '+getBest('memoryBest')+'/8'+
+ '<br><br>🚀 Space Shooter Best: '+getBest('shooterBest');
 }
 function clearScores(){
- localStorage.removeItem('snakeBest');localStorage.removeItem('memoryBest');
- scorePage();document.getElementById('snakeBest').textContent=0;
+ localStorage.removeItem('snakeBest');
+ localStorage.removeItem('memoryBest');
+ localStorage.removeItem('shooterBest');
+ scorePage();
+ document.getElementById('snakeBest').textContent=0;
 }
 
 // TIC TAC TOE
 let tc=Array(9).fill(''),td=false,turn='X',xw=0,ow=0,dr=0;
 const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 function ticWinner(){
- for(let l of lines)if(tc[l[0]]&&tc[l[0]]===tc[l[1]]&&tc[l[1]]===tc[l[2]])return tc[l[0]];
+ for(let l of lines)
+  if(tc[l[0]]&&tc[l[0]]===tc[l[1]]&&tc[l[1]]===tc[l[2]])return tc[l[0]];
  return tc.every(Boolean)?'draw':null;
 }
 function ticRender(){
- document.querySelectorAll('.cell').forEach((b,i)=>{b.textContent=tc[i];b.disabled=!!tc[i]||td});
+ document.querySelectorAll('.cell').forEach((b,i)=>{
+  b.textContent=tc[i];b.disabled=!!tc[i]||td;
+ });
  document.getElementById('ticScore').textContent=`X: ${xw} | O: ${ow} | Draw: ${dr}`;
 }
 function ticEnd(r){
@@ -168,82 +204,123 @@ function ticEnd(r){
 }
 function ticPlay(i){
  if(td||tc[i])return;
- tc[i]=turn;let r=ticWinner();
+ tc[i]=turn;
+ let r=ticWinner();
  if(r){ticEnd(r);return}
  if(turn==='X'&&document.getElementById('ticMode').value==='computer'){
-  turn='O';document.getElementById('ts').textContent="Computer's turn";ticRender();
+  turn='O';
+  document.getElementById('ts').textContent="Computer's turn";
+  ticRender();
   setTimeout(()=>{
    if(td)return;
    let empty=tc.map((v,j)=>v===''?j:-1).filter(j=>j>=0),pick=-1;
-   for(let j of empty){tc[j]='O';if(ticWinner()==='O')pick=j;tc[j]='';if(pick>=0)break}
-   if(pick<0)for(let j of empty){tc[j]='X';if(ticWinner()==='X')pick=j;tc[j]='';if(pick>=0)break}
+   for(let j of empty){
+    tc[j]='O';if(ticWinner()==='O')pick=j;tc[j]='';
+    if(pick>=0)break;
+   }
+   if(pick<0)for(let j of empty){
+    tc[j]='X';if(ticWinner()==='X')pick=j;tc[j]='';
+    if(pick>=0)break;
+   }
    if(pick<0)pick=empty[Math.floor(Math.random()*empty.length)];
-   tc[pick]='O';r=ticWinner();if(r)ticEnd(r);
+   tc[pick]='O';r=ticWinner();
+   if(r)ticEnd(r);
    else{turn='X';document.getElementById('ts').textContent="Your turn: X";ticRender()}
   },300);
  }else{
-  turn=turn==='X'?'O':'X';document.getElementById('ts').textContent='Player '+turn+"'s turn";ticRender();
+  turn=turn==='X'?'O':'X';
+  document.getElementById('ts').textContent='Player '+turn+"'s turn";
+  ticRender();
  }
 }
 function ticReset(){
  tc=Array(9).fill('');td=false;turn='X';
- document.getElementById('ts').textContent="Player X's turn";ticRender();
+ document.getElementById('ts').textContent="Player X's turn";
+ ticRender();
 }
 ticRender();
 
-// SNAKE SWIPE
+// SNAKE GAME
 const cv=document.getElementById('canvas'),cx=cv.getContext('2d');
 let sn=[],food={x:5,y:5},dx=1,dy=0,sc=0,st=null,playing=false,startX=0,startY=0;
 function foodNew(){
- let p;do{p={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)}}while(sn.some(s=>s.x===p.x&&s.y===p.y));return p;
+ let p;
+ do{p={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)}}
+ while(sn.some(s=>s.x===p.x&&s.y===p.y));
+ return p;
 }
 function snakeDraw(){
  cx.fillStyle='#080d18';cx.fillRect(0,0,320,320);
- sn.forEach((p,i)=>{cx.fillStyle=i===0?'#d9f99d':'#84cc16';cx.fillRect(p.x*16+1,p.y*16+1,14,14)});
- if(food){cx.fillStyle='#fb7185';cx.beginPath();cx.arc(food.x*16+8,food.y*16+8,6,0,Math.PI*2);cx.fill()}
+ sn.forEach((p,i)=>{
+  cx.fillStyle=i===0?'#d9f99d':'#84cc16';
+  cx.fillRect(p.x*16+1,p.y*16+1,14,14);
+ });
+ if(food){
+  cx.fillStyle='#fb7185';cx.beginPath();
+  cx.arc(food.x*16+8,food.y*16+8,6,0,Math.PI*2);cx.fill();
+ }
 }
 function snakeStart(){
- clearInterval(st);sn=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];dx=1;dy=0;sc=0;food=foodNew();playing=true;
+ clearInterval(st);
+ sn=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+ dx=1;dy=0;sc=0;food=foodNew();playing=true;
  document.getElementById('snakeScore').textContent=0;
  document.getElementById('ss').textContent='Swipe to move!';
  snakeDraw();st=setInterval(snakeMove,130);
 }
 function snakeMove(){
- let h={x:sn[0].x+dx,y:sn[0].y+dy},eat=h.x===food.x&&h.y===food.y;
+ let h={x:sn[0].x+dx,y:sn[0].y+dy};
+ let eat=h.x===food.x&&h.y===food.y;
  let body=eat?sn:sn.slice(0,-1);
  if(h.x<0||h.y<0||h.x>=20||h.y>=20||body.some(p=>p.x===h.x&&p.y===h.y)){
-  playing=false;clearInterval(st);document.getElementById('ss').textContent='Game Over! Score: '+sc;saveBest('snakeBest',sc);
-  document.getElementById('snakeBest').textContent=getBest('snakeBest');return;
+  playing=false;clearInterval(st);
+  document.getElementById('ss').textContent='Game Over! Score: '+sc;
+  saveBest('snakeBest',sc);
+  document.getElementById('snakeBest').textContent=getBest('snakeBest');
+  return;
  }
  sn.unshift(h);
- if(eat){sc+=10;document.getElementById('snakeScore').textContent=sc;food=foodNew()}else sn.pop();
+ if(eat){
+  sc+=10;document.getElementById('snakeScore').textContent=sc;food=foodNew();
+ }else sn.pop();
  snakeDraw();
 }
-function snakeDirection(x,y){if(!playing||x===-dx&&y===-dy)return;dx=x;dy=y}
-cv.addEventListener('touchstart',e=>{let t=e.touches[0];startX=t.clientX;startY=t.clientY},{passive:true});
+function snakeDirection(x,y){
+ if(!playing||(x===-dx&&y===-dy))return;
+ dx=x;dy=y;
+}
+cv.addEventListener('touchstart',e=>{
+ let t=e.touches[0];startX=t.clientX;startY=t.clientY;
+},{passive:true});
 cv.addEventListener('touchend',e=>{
  let t=e.changedTouches[0],x=t.clientX-startX,y=t.clientY-startY;
  if(Math.max(Math.abs(x),Math.abs(y))<18)return;
- if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);else snakeDirection(0,y>0?1:-1);
+ if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);
+ else snakeDirection(0,y>0?1:-1);
 },{passive:true});
 cv.addEventListener('mousedown',e=>{startX=e.clientX;startY=e.clientY});
 cv.addEventListener('mouseup',e=>{
  let x=e.clientX-startX,y=e.clientY-startY;
  if(Math.max(Math.abs(x),Math.abs(y))<18)return;
- if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);else snakeDirection(0,y>0?1:-1);
+ if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);
+ else snakeDirection(0,y>0?1:-1);
 });
 document.addEventListener('keydown',e=>{
  let k={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];
- if(k&&document.getElementById('snake').classList.contains('active')){e.preventDefault();snakeDirection(k[0],k[1])}
+ if(k&&document.getElementById('snake').classList.contains('active')){
+  e.preventDefault();snakeDirection(k[0],k[1]);
+ }
 });
-document.getElementById('snakeBest').textContent=getBest('snakeBest');snakeDraw();
+document.getElementById('snakeBest').textContent=getBest('snakeBest');
+snakeDraw();
 
 // ROCK PAPER SCISSORS
 let rp1=0,rp2=0,waiting=null;
 function rps(v){
  let mode=document.getElementById('rMode').value;
  if(mode==='two'&&!waiting){
-  waiting=v;document.getElementById('rs').textContent='Player 1 chose. Player 2, choose now!';
+  waiting=v;
+  document.getElementById('rs').textContent='Player 1 chose. Player 2, choose now!';
   document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='hidden');
   return;
  }
@@ -251,22 +328,31 @@ function rps(v){
  document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='visible');
  waiting=null;
  let result='';
- if(a===b)result='Draw!';
- else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){result='Player 1 wins!';rp1++}
- else{result='Player 2 wins!';rp2++}
  if(mode==='computer'){
-  let arr=['Rock','Paper','Scissors'];b=arr[Math.floor(Math.random()*3)];
+  let arr=['Rock','Paper','Scissors'];
+  b=arr[Math.floor(Math.random()*3)];
   if(a===b)result='Draw!';
-  else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){result='You win!';rp1++}
-  else{result='Computer wins!';rp2++}
+  else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){
+   result='You win!';rp1++;
+  }else{result='Computer wins!';rp2++}
+ }else{
+  if(a===b)result='Draw!';
+  else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){
+   result='Player 1 wins!';rp1++;
+  }else{result='Player 2 wins!';rp2++}
  }
  document.getElementById('rs').textContent=`${a} vs ${b} — ${result}`;
  document.getElementById('rScore').textContent=`Player 1: ${rp1} | Player 2: ${rp2}`;
 }
-function rReset(){rp1=0;rp2=0;waiting=null;document.getElementById('rs').textContent='Player 1, choose your move!';document.getElementById('rScore').textContent='Player 1: 0 | Player 2: 0';document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='visible')}
+function rReset(){
+ rp1=0;rp2=0;waiting=null;
+ document.getElementById('rs').textContent='Player 1, choose your move!';
+ document.getElementById('rScore').textContent='Player 1: 0 | Player 2: 0';
+ document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='visible');
+}
 
 // MEMORY MATCH
-const emojis=['🐱','🐶','🦊','🐷','🐼','🦁','🐵','🐰'];
+const emojis=['🐱','🐶','🦊','🐸','🐼','🦁','🐵','🐰'];
 let deck=[],first=null,lock=false,moves=0,pairs=0,player=1,p1=0,p2=0;
 function memoryStart(){
  deck=[...emojis,...emojis].sort(()=>Math.random()-.5);
@@ -286,7 +372,9 @@ function memoryFlip(b,emoji){
  moves++;
  if(first.textContent===b.textContent){
   first.classList.add('matched');b.classList.add('matched');first=null;pairs++;
-  if(document.getElementById('mMode').value==='two'){if(player===1)p1++;else p2++}
+  if(document.getElementById('mMode').value==='two'){
+   if(player===1)p1++;else p2++;
+  }
   document.getElementById('mScore').textContent=`Moves: ${moves} | Pairs: ${pairs}/8 | P1: ${p1} P2: ${p2}`;
   if(pairs===8){
    saveBest('memoryBest',8);
@@ -298,11 +386,126 @@ function memoryFlip(b,emoji){
   document.getElementById('mScore').textContent=`Moves: ${moves} | Pairs: ${pairs}/8 | P1: ${p1} P2: ${p2}`;
   setTimeout(()=>{
    prev.textContent='❔';b.textContent='❔';lock=false;
-   if(document.getElementById('mMode').value==='two'){player=player===1?2:1;document.getElementById('ms').textContent='Player '+player+"'s turn!"}
+   if(document.getElementById('mMode').value==='two'){
+    player=player===1?2:1;
+    document.getElementById('ms').textContent='Player '+player+"'s turn!";
+   }
   },750);
  }
 }
 memoryStart();
+
+// SPACE SHOOTER
+const sh=document.getElementById('shooterCanvas'),scx=sh.getContext('2d');
+let ship={x:150,y:370},bullets=[],aliens=[],shScore=0,shLives=3,shTimer=null,shPlaying=false,shDir=0,shTick=0,shPointer=false;
+function shDraw(){
+ scx.fillStyle='#050b20';scx.fillRect(0,0,320,420);
+ for(let i=0;i<35;i++){
+  scx.fillStyle='#ffffff';scx.fillRect((i*83)%320,(i*47+shTick*.4)%420,2,2);
+ }
+ scx.fillStyle='#67e8f9';scx.beginPath();
+ scx.moveTo(ship.x,ship.y-16);scx.lineTo(ship.x-14,ship.y+13);scx.lineTo(ship.x+14,ship.y+13);scx.closePath();scx.fill();
+ scx.fillStyle='#facc15';bullets.forEach(b=>scx.fillRect(b.x-2,b.y-7,4,12));
+ aliens.forEach(a=>{
+  scx.fillStyle='#fb7185';scx.fillRect(a.x-12,a.y-9,24,18);
+  scx.fillStyle='#fff';scx.fillRect(a.x-6,a.y-3,4,4);scx.fillRect(a.x+3,a.y-3,4,4);
+ });
+}
+function shStart(){
+ clearInterval(shTimer);ship={x:160,y:370};bullets=[];aliens=[];
+ shScore=0;shLives=3;shTick=0;shPlaying=true;
+ document.getElementById('shScore').textContent=0;
+ document.getElementById('shLives').textContent=3;
+ document.getElementById('shStatus').textContent='Defend your spaceship!';
+ shTimer=setInterval(shUpdate,35);shDraw();
+}
+function shMove(d){shDir=d}
+function shStop(){shDir=0}
+function shFire(){if(shPlaying)bullets.push({x:ship.x,y:ship.y-18})}
+function shUpdate(){
+ shTick++;ship.x=Math.max(15,Math.min(305,ship.x+shDir*5));
+ if(shTick%24===0)aliens.push({x:20+Math.random()*280,y:15});
+ bullets.forEach(b=>b.y-=8);aliens.forEach(a=>a.y+=1.8);
+ bullets=bullets.filter(b=>b.y>-10);
+ for(let i=aliens.length-1;i>=0;i--){
+  let a=aliens[i],hit=bullets.findIndex(b=>Math.abs(b.x-a.x)<17&&Math.abs(b.y-a.y)<15);
+  if(hit>=0){bullets.splice(hit,1);aliens.splice(i,1);shScore+=10;document.getElementById('shScore').textContent=shScore}
+  else if(a.y>400){aliens.splice(i,1);shLives--;document.getElementById('shLives').textContent=shLives}
+ }
+ if(shLives<=0){
+  clearInterval(shTimer);shPlaying=false;saveBest('shooterBest',shScore);
+  document.getElementById('shStatus').textContent='Game Over! Final score: '+shScore;
+ }
+ shDraw();
+}
+sh.addEventListener('pointerdown',e=>{
+ if(!shPlaying)return;shPointer=true;
+ let r=sh.getBoundingClientRect();ship.x=(e.clientX-r.left)*320/r.width;shFire();
+});
+sh.addEventListener('pointermove',e=>{
+ if(!shPlaying||!shPointer)return;
+ let r=sh.getBoundingClientRect();
+ ship.x=Math.max(15,Math.min(305,(e.clientX-r.left)*320/r.width));
+});
+sh.addEventListener('pointerup',()=>shPointer=false);
+sh.addEventListener('pointercancel',()=>shPointer=false);
+shDraw();
+
+// PING PONG - TWO PLAYERS
+const pc=document.getElementById('pingCanvas'),px=pc.getContext('2d');
+let paddle1=125,paddle2=125,ball={x:160,y:210,vx:2.5,vy:3},pScore1=0,pScore2=0,pingTimer=null,pingPlaying=false;
+function pingDraw(){
+ px.fillStyle='#071426';px.fillRect(0,0,320,420);
+ px.setLineDash([7,8]);px.strokeStyle='#ffffff66';
+ px.beginPath();px.moveTo(0,210);px.lineTo(320,210);px.stroke();px.setLineDash([]);
+ px.fillStyle='#c084fc';
+ px.fillRect(paddle2,12,70,9);px.fillRect(paddle1,399,70,9);
+ px.fillStyle='#fef08a';px.beginPath();px.arc(ball.x,ball.y,7,0,Math.PI*2);px.fill();
+}
+function pingScoreText(){
+ document.getElementById('pingScore').textContent='Player 1: '+pScore1+' | Player 2: '+pScore2;
+}
+function pingStart(){
+ clearInterval(pingTimer);pScore1=0;pScore2=0;paddle1=125;paddle2=125;
+ ball={x:160,y:210,vx:2.5,vy:3};pingPlaying=true;pingScoreText();
+ document.getElementById('pingStatus').textContent='Game on! First to 5 points wins.';
+ pingTimer=setInterval(pingUpdate,16);pingDraw();
+}
+function pingUpdate(){
+ ball.x+=ball.vx;ball.y+=ball.vy;
+ if(ball.x<7||ball.x>313)ball.vx*=-1;
+ if(ball.vy>0&&ball.y>=390&&ball.x>=paddle1-5&&ball.x<=paddle1+75){
+  ball.vy=-Math.abs(ball.vy)*1.03;ball.vx+=(ball.x-(paddle1+35))*.035;
+ }
+ if(ball.vy<0&&ball.y<=30&&ball.x>=paddle2-5&&ball.x<=paddle2+75){
+  ball.vy=Math.abs(ball.vy)*1.03;ball.vx+=(ball.x-(paddle2+35))*.035;
+ }
+ if(ball.y>425){pScore2++;pingPoint('Player 2')}
+ if(ball.y< -5){pScore1++;pingPoint('Player 1')}
+ ball.vx=Math.max(-5,Math.min(5,ball.vx));pingDraw();
+}
+function pingPoint(winner){
+ pingScoreText();
+ if(pScore1>=5||pScore2>=5){
+  clearInterval(pingTimer);pingPlaying=false;
+  document.getElementById('pingStatus').textContent=winner+' wins the match!';
+  return;
+ }
+ document.getElementById('pingStatus').textContent=winner+' scores!';
+ ball={x:160,y:210,vx:(Math.random()>.5?2.5:-2.5),vy:(Math.random()>.5?3:-3)};
+}
+function pingMove(e){
+ let r=pc.getBoundingClientRect();
+ let x=(e.clientX-r.left)*320/r.width,y=(e.clientY-r.top)*420/r.height;
+ let pos=Math.max(0,Math.min(250,x-35));
+ if(y<210)paddle2=pos;else paddle1=pos;
+ pingDraw();
+}
+pc.addEventListener('pointerdown',pingMove);
+pc.addEventListener('pointermove',e=>{
+ if(e.buttons||e.pointerType==='touch')pingMove(e);
+});
+pingDraw();
 </script>
 </body>
 </html>
