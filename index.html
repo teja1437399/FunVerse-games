@@ -1,91 +1,130 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FUNVERSE GAMES | Created by TEJA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUNVERSE GAMES | TEJA</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top,#40216d,#100b20 65%,#080611);color:#fff;font-family:Arial,sans-serif;text-align:center;min-height:100vh}
-header{padding:28px 12px 12px}
-h1{font-size:clamp(30px,8vw,52px);color:#e9c7ff;text-shadow:0 0 22px #a855f7;margin:5px}
-.creator{color:#f0abfc;letter-spacing:3px;font-size:14px}
-header p{color:#d5c3e9}
+body{margin:0;background:radial-gradient(circle at top,#54218a,#160c2c 55%,#080611);color:white;font-family:Arial,sans-serif;text-align:center}
+header{padding:30px 12px 15px}
+h1{font-size:clamp(32px,8vw,55px);margin:5px;color:#f0d5ff;text-shadow:0 0 22px #c084fc}
+.creator{color:#f0abfc;letter-spacing:3px;font-weight:bold}
+header p{color:#ddc8f4}
 nav{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;padding:12px}
-button{border:0;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,#a855f7,#5b21b6);color:white;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 5px 16px #0006}
+button{border:0;border-radius:13px;padding:12px 16px;background:linear-gradient(135deg,#c026d3,#6d28d9);color:white;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 5px 15px #0008}
 button:active{transform:scale(.96)}
-.game{display:none;max-width:440px;margin:15px auto 28px;padding:20px;background:#ffffff12;border:1px solid #ffffff30;border-radius:22px;box-shadow:0 15px 35px #0007}
+.game{display:none;max-width:460px;margin:15px auto 28px;padding:20px;background:#ffffff12;border:1px solid #ffffff30;border-radius:23px;box-shadow:0 15px 40px #0008}
 .game.active{display:block}
-h2{color:#e9d5ff}
-.status{color:#f5d0fe;min-height:24px;font-weight:bold}
+h2{color:#f0d5ff}
+.status{min-height:25px;color:#f5d0fe;font-weight:bold}
 .score{color:#d8b4fe}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(130px,1fr));gap:14px;max-width:390px;margin:20px auto}
+.gamecard{padding:20px 8px;border-radius:20px;background:linear-gradient(145deg,#6d28d9,#251044);border:1px solid #d8b4fe;box-shadow:0 8px 22px #0008}
+.gamecard .emoji{font-size:48px;display:block;margin-bottom:10px}
+.gamecard h3{margin:5px;color:#fff}
+.gamecard p{font-size:12px;color:#e9d5ff}
 .board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:18px auto}
-.cell{aspect-ratio:1;background:#ffffff18;border:2px solid #a855f7;border-radius:14px;font-size:42px;color:white;padding:0}
+.cell{aspect-ratio:1;background:#ffffff18;border:2px solid #c084fc;border-radius:14px;font-size:42px;color:white;padding:0}
 .cell:disabled{opacity:1}
-canvas{width:100%;max-width:320px;aspect-ratio:1;background:#080d18;border:2px solid #a855f7;border-radius:12px;display:block;margin:15px auto;touch-action:none}
-.swipe-note{font-size:13px;color:#d8b4fe}
-.choices{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+canvas{width:100%;max-width:320px;aspect-ratio:1;background:#080d18;border:2px solid #c084fc;border-radius:12px;display:block;margin:15px auto;touch-action:none}
+.choices{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}
 .choices button{font-size:28px;min-width:75px}
-.memory{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;max-width:330px;margin:18px auto}
-.card{aspect-ratio:1;background:#542b86;border:2px solid #c084fc;border-radius:12px;font-size:28px;padding:0}
-footer{padding:25px;color:#bda9d5;font-size:13px}
+.memory{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:330px;margin:18px auto}
+.card{aspect-ratio:1;background:#542b86;border:2px solid #c084fc;border-radius:12px;font-size:26px;padding:0}
+.small{font-size:13px;color:#d8b4fe}
+select{padding:11px;border-radius:10px;background:#2b1746;color:white;border:1px solid #c084fc;margin:8px}
+footer{padding:25px;color:#cbb4e4;font-size:13px}
 </style>
 </head>
 <body>
 <header>
 <h1> FUNVERSE GAMES</h1>
 <div class="creator">✨ CREATED BY TEJA ✨</div>
-<p>Play • Enjoy • Have Fun!</p>
+<p>Play • Challenge • Enjoy!</p>
 </header>
 
 <nav>
+<button onclick="home()">🏠 Home</button>
 <button onclick="show('tic')">❌ Tic Tac Toe</button>
 <button onclick="show('snake')">🐍 Snake</button>
 <button onclick="show('rps')">✊ RPS</button>
 <button onclick="show('memory')">🧠 Memory</button>
+<button onclick="show('scores')">🏆 Scores</button>
 </nav>
 
-<section class="game active" id="tic">
+<section id="home" class="game active">
+<h2>🌟 Choose Your Game</h2>
+<div class="cards">
+<button class="gamecard" onclick="show('tic')"><span class="emoji">❌⭕</span><h3>Tic Tac Toe</h3><p>Play with friend or computer</p></button>
+<button class="gamecard" onclick="show('snake')"><span class="emoji">🐍</span><h3>Snake Game</h3><p>Swipe and collect food</p></button>
+<button class="gamecard" onclick="show('rps')"><span class="emoji">✊✋✌️</span><h3>Rock Paper Scissors</h3><p>Challenge your friend</p></button>
+<button class="gamecard" onclick="show('memory')"><span class="emoji">🧠</span><h3>Memory Match</h3><p>Find matching cards</p></button>
+</div>
+<h3>🌟 Daily Challenge</h3>
+<p class="small">Today's challenge: Play a Memory Match game and find all 8 pairs!</p>
+<button onclick="show('memory')">Start Challenge 🚀</button>
+</section>
+
+<section class="game" id="tic">
 <h2>❌⭕ Tic Tac Toe</h2>
-<p class="status" id="ts">Your turn: X</p>
-<p class="score" id="tScore">You: 0 | Computer: 0 | Draw: 0</p>
+<select id="ticMode" onchange="ticReset()">
+<option value="computer">Play vs Computer</option>
+<option value="two">2 Players – Same Device</option>
+</select>
+<p class="status" id="ts">Player X's turn</p>
 <div class="board" id="board">
 <button class="cell" onclick="ticPlay(0)"></button><button class="cell" onclick="ticPlay(1)"></button><button class="cell" onclick="ticPlay(2)"></button>
 <button class="cell" onclick="ticPlay(3)"></button><button class="cell" onclick="ticPlay(4)"></button><button class="cell" onclick="ticPlay(5)"></button>
 <button class="cell" onclick="ticPlay(6)"></button><button class="cell" onclick="ticPlay(7)"></button><button class="cell" onclick="ticPlay(8)"></button>
 </div>
+<p class="score" id="ticScore">X: 0 | O: 0 | Draw: 0</p>
 <button onclick="ticReset()">🔄 New Game</button>
 </section>
 
 <section class="game" id="snake">
 <h2>🐍 Snake Game</h2>
-<p class="status" id="ss">Swipe on the game area to move!</p>
-<p class="score">Score: <span id="snakeScore">0</span></p>
+<p class="status" id="ss">Press Start, then swipe on the game!</p>
+<p class="score">Score: <span id="snakeScore">0</span> | Best: <span id="snakeBest">0</span></p>
 <canvas id="canvas" width="320" height="320"></canvas>
-<p class="swipe-note">👆 Swipe up, down, left or right on the game screen.</p>
+<p class="small">👆 Swipe on the game area to change direction.</p>
 <button onclick="snakeStart()">▶ Start / Restart</button>
 </section>
 
 <section class="game" id="rps">
 <h2>✊ Rock Paper Scissors</h2>
-<p class="status" id="rs">Choose your move!</p>
+<select id="rMode">
+<option value="computer">Play vs Computer</option>
+<option value="two">2 Players – Same Device</option>
+</select>
+<p class="status" id="rs">Player 1, choose your move!</p>
 <div class="choices">
 <button onclick="rps('Rock')">✊</button>
 <button onclick="rps('Paper')">✋</button>
 <button onclick="rps('Scissors')">✌️</button>
 </div>
-<p class="score" id="rScore">You: 0 | Computer: 0</p>
+<p class="score" id="rScore">Player 1: 0 | Player 2: 0</p>
 <button onclick="rReset()">🔄 Reset Score</button>
 </section>
 
 <section class="game" id="memory">
 <h2>🧠 Memory Match</h2>
+<select id="mMode">
+<option value="one">Single Player</option>
+<option value="two">2 Players – Same Device</option>
+</select>
 <p class="status" id="ms">Find all matching pairs!</p>
-<p class="score">Moves: <span id="moves">0</span> | Pairs: <span id="pairs">0</span>/8</p>
+<p class="score" id="mScore">Moves: 0 | Pairs: 0/8</p>
 <div class="memory" id="memoryBoard"></div>
 <button onclick="memoryStart()">🔄 Restart</button>
+</section>
+
+<section class="game" id="scores">
+<h2>🏆 Your Best Scores</h2>
+<p class="score" id="allScores"></p>
+<p class="small">Scores are saved on this device/browser.</p>
+<button onclick="clearScores()">Reset Best Scores</button>
 </section>
 
 <footer>Made with 💜 by TEJA<br>© 2026 FUNVERSE GAMES</footer>
@@ -95,10 +134,22 @@ function show(id){
  document.querySelectorAll('.game').forEach(g=>g.classList.remove('active'));
  document.getElementById(id).classList.add('active');
  if(id==='snake')snakeDraw();
+ if(id==='scores')scorePage();
+}
+function home(){show('home')}
+function getBest(k){return Number(localStorage.getItem(k)||0)}
+function saveBest(k,v){if(v>getBest(k))localStorage.setItem(k,v)}
+function scorePage(){
+ document.getElementById('allScores').innerHTML=
+ '🐍 Snake Best: '+getBest('snakeBest')+'<br><br>🧠 Memory Best Pairs: '+getBest('memoryBest')+'/8';
+}
+function clearScores(){
+ localStorage.removeItem('snakeBest');localStorage.removeItem('memoryBest');
+ scorePage();document.getElementById('snakeBest').textContent=0;
 }
 
 // TIC TAC TOE
-let tc=Array(9).fill(''),td=false,tw=0,tl=0,tx=0;
+let tc=Array(9).fill(''),td=false,turn='X',xw=0,ow=0,dr=0;
 const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 function ticWinner(){
  for(let l of lines)if(tc[l[0]]&&tc[l[0]]===tc[l[1]]&&tc[l[1]]===tc[l[2]])return tc[l[0]];
@@ -106,35 +157,41 @@ function ticWinner(){
 }
 function ticRender(){
  document.querySelectorAll('.cell').forEach((b,i)=>{b.textContent=tc[i];b.disabled=!!tc[i]||td});
- document.getElementById('tScore').textContent=`You: ${tw} | Computer: ${tl} | Draw: ${tx}`;
+ document.getElementById('ticScore').textContent=`X: ${xw} | O: ${ow} | Draw: ${dr}`;
 }
 function ticEnd(r){
  td=true;
- if(r==='X'){tw++;document.getElementById('ts').textContent='🎉 You win!'}
- else if(r==='O'){tl++;document.getElementById('ts').textContent='Computer wins!'}
- else{tx++;document.getElementById('ts').textContent="It's a draw!"}
+ if(r==='X'){xw++;document.getElementById('ts').textContent='🎉 Player X wins!'}
+ else if(r==='O'){ow++;document.getElementById('ts').textContent='🎉 Player O wins!'}
+ else{dr++;document.getElementById('ts').textContent="It's a draw!"}
  ticRender();
 }
 function ticPlay(i){
  if(td||tc[i])return;
- tc[i]='X';let r=ticWinner();
+ tc[i]=turn;let r=ticWinner();
  if(r){ticEnd(r);return}
- document.getElementById('ts').textContent="Computer's turn...";
- ticRender();
- setTimeout(()=>{
-  if(td)return;
-  let empty=tc.map((v,j)=>v===''?j:-1).filter(j=>j>=0),pick=-1;
-  for(let j of empty){tc[j]='O';if(ticWinner()==='O')pick=j;tc[j]='';if(pick>=0)break}
-  if(pick<0)for(let j of empty){tc[j]='X';if(ticWinner()==='X')pick=j;tc[j]='';if(pick>=0)break}
-  if(pick<0)pick=empty[Math.floor(Math.random()*empty.length)];
-  tc[pick]='O';r=ticWinner();
-  if(r)ticEnd(r);else{document.getElementById('ts').textContent='Your turn: X';ticRender()}
- },300);
+ if(turn==='X'&&document.getElementById('ticMode').value==='computer'){
+  turn='O';document.getElementById('ts').textContent="Computer's turn";ticRender();
+  setTimeout(()=>{
+   if(td)return;
+   let empty=tc.map((v,j)=>v===''?j:-1).filter(j=>j>=0),pick=-1;
+   for(let j of empty){tc[j]='O';if(ticWinner()==='O')pick=j;tc[j]='';if(pick>=0)break}
+   if(pick<0)for(let j of empty){tc[j]='X';if(ticWinner()==='X')pick=j;tc[j]='';if(pick>=0)break}
+   if(pick<0)pick=empty[Math.floor(Math.random()*empty.length)];
+   tc[pick]='O';r=ticWinner();if(r)ticEnd(r);
+   else{turn='X';document.getElementById('ts').textContent="Your turn: X";ticRender()}
+  },300);
+ }else{
+  turn=turn==='X'?'O':'X';document.getElementById('ts').textContent='Player '+turn+"'s turn";ticRender();
+ }
 }
-function ticReset(){tc=Array(9).fill('');td=false;document.getElementById('ts').textContent='Your turn: X';ticRender()}
+function ticReset(){
+ tc=Array(9).fill('');td=false;turn='X';
+ document.getElementById('ts').textContent="Player X's turn";ticRender();
+}
 ticRender();
 
-// SNAKE - TOUCH SWIPE
+// SNAKE SWIPE
 const cv=document.getElementById('canvas'),cx=cv.getContext('2d');
 let sn=[],food={x:5,y:5},dx=1,dy=0,sc=0,st=null,playing=false,startX=0,startY=0;
 function foodNew(){
@@ -143,68 +200,82 @@ function foodNew(){
 function snakeDraw(){
  cx.fillStyle='#080d18';cx.fillRect(0,0,320,320);
  sn.forEach((p,i)=>{cx.fillStyle=i===0?'#d9f99d':'#84cc16';cx.fillRect(p.x*16+1,p.y*16+1,14,14)});
- cx.fillStyle='#fb7185';cx.beginPath();cx.arc(food.x*16+8,food.y*16+8,6,0,Math.PI*2);cx.fill();
+ if(food){cx.fillStyle='#fb7185';cx.beginPath();cx.arc(food.x*16+8,food.y*16+8,6,0,Math.PI*2);cx.fill()}
 }
 function snakeStart(){
  clearInterval(st);sn=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];dx=1;dy=0;sc=0;food=foodNew();playing=true;
- document.getElementById('snakeScore').textContent=sc;
- document.getElementById('ss').textContent='Swipe to change direction!';
+ document.getElementById('snakeScore').textContent=0;
+ document.getElementById('ss').textContent='Swipe to move!';
  snakeDraw();st=setInterval(snakeMove,130);
 }
 function snakeMove(){
  let h={x:sn[0].x+dx,y:sn[0].y+dy},eat=h.x===food.x&&h.y===food.y;
  let body=eat?sn:sn.slice(0,-1);
  if(h.x<0||h.y<0||h.x>=20||h.y>=20||body.some(p=>p.x===h.x&&p.y===h.y)){
-  playing=false;clearInterval(st);document.getElementById('ss').textContent='Game Over! Score: '+sc;return;
+  playing=false;clearInterval(st);document.getElementById('ss').textContent='Game Over! Score: '+sc;saveBest('snakeBest',sc);
+  document.getElementById('snakeBest').textContent=getBest('snakeBest');return;
  }
  sn.unshift(h);
  if(eat){sc+=10;document.getElementById('snakeScore').textContent=sc;food=foodNew()}else sn.pop();
  snakeDraw();
 }
-function snakeDirection(x,y){if(!playing)return;if(x===-dx&&y===-dy)return;dx=x;dy=y}
+function snakeDirection(x,y){if(!playing||x===-dx&&y===-dy)return;dx=x;dy=y}
 cv.addEventListener('touchstart',e=>{let t=e.touches[0];startX=t.clientX;startY=t.clientY},{passive:true});
 cv.addEventListener('touchend',e=>{
  let t=e.changedTouches[0],x=t.clientX-startX,y=t.clientY-startY;
  if(Math.max(Math.abs(x),Math.abs(y))<18)return;
- if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);
- else snakeDirection(0,y>0?1:-1);
+ if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);else snakeDirection(0,y>0?1:-1);
 },{passive:true});
 cv.addEventListener('mousedown',e=>{startX=e.clientX;startY=e.clientY});
 cv.addEventListener('mouseup',e=>{
  let x=e.clientX-startX,y=e.clientY-startY;
  if(Math.max(Math.abs(x),Math.abs(y))<18)return;
- if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);
- else snakeDirection(0,y>0?1:-1);
+ if(Math.abs(x)>Math.abs(y))snakeDirection(x>0?1:-1,0);else snakeDirection(0,y>0?1:-1);
 });
 document.addEventListener('keydown',e=>{
  let k={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];
  if(k&&document.getElementById('snake').classList.contains('active')){e.preventDefault();snakeDirection(k[0],k[1])}
 });
-snakeDraw();
+document.getElementById('snakeBest').textContent=getBest('snakeBest');snakeDraw();
 
 // ROCK PAPER SCISSORS
-let rpYou=0,rpComp=0;
+let rp1=0,rp2=0,waiting=null;
 function rps(v){
- let arr=['Rock','Paper','Scissors'],c=arr[Math.floor(Math.random()*3)],out='';
- if(v===c)out='Draw!';
- else if((v==='Rock'&&c==='Scissors')||(v==='Paper'&&c==='Rock')||(v==='Scissors'&&c==='Paper')){out='🎉 You win!';rpYou++}
- else{out='Computer wins!';rpComp++}
- document.getElementById('rs').textContent=`You: ${v} | Computer: ${c} — ${out}`;
- document.getElementById('rScore').textContent=`You: ${rpYou} | Computer: ${rpComp}`;
+ let mode=document.getElementById('rMode').value;
+ if(mode==='two'&&!waiting){
+  waiting=v;document.getElementById('rs').textContent='Player 1 chose. Player 2, choose now!';
+  document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='hidden');
+  return;
+ }
+ let a=mode==='two'?waiting:v,b=v;
+ document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='visible');
+ waiting=null;
+ let result='';
+ if(a===b)result='Draw!';
+ else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){result='Player 1 wins!';rp1++}
+ else{result='Player 2 wins!';rp2++}
+ if(mode==='computer'){
+  let arr=['Rock','Paper','Scissors'];b=arr[Math.floor(Math.random()*3)];
+  if(a===b)result='Draw!';
+  else if((a==='Rock'&&b==='Scissors')||(a==='Paper'&&b==='Rock')||(a==='Scissors'&&b==='Paper')){result='You win!';rp1++}
+  else{result='Computer wins!';rp2++}
+ }
+ document.getElementById('rs').textContent=`${a} vs ${b} — ${result}`;
+ document.getElementById('rScore').textContent=`Player 1: ${rp1} | Player 2: ${rp2}`;
 }
-function rReset(){rpYou=0;rpComp=0;document.getElementById('rs').textContent='Choose your move!';document.getElementById('rScore').textContent='You: 0 | Computer: 0'}
+function rReset(){rp1=0;rp2=0;waiting=null;document.getElementById('rs').textContent='Player 1, choose your move!';document.getElementById('rScore').textContent='Player 1: 0 | Player 2: 0';document.querySelectorAll('.choices button').forEach(b=>b.style.visibility='visible')}
 
 // MEMORY MATCH
-const emojis=['🐱','🐶','🦊','🐸','🐼','🦁','🐵','🐰'];
-let deck=[],first=null,lock=false,moveCount=0,pairCount=0;
+const emojis=['🐱','🐶','🦊','🐷','🐼','🦁','🐵','🐰'];
+let deck=[],first=null,lock=false,moves=0,pairs=0,player=1,p1=0,p2=0;
 function memoryStart(){
  deck=[...emojis,...emojis].sort(()=>Math.random()-.5);
- first=null;lock=false;moveCount=0;pairCount=0;
- document.getElementById('moves').textContent=0;document.getElementById('pairs').textContent=0;
- document.getElementById('ms').textContent='Find all matching pairs!';
+ first=null;lock=false;moves=0;pairs=0;player=1;p1=0;p2=0;
+ document.getElementById('mScore').textContent='Moves: 0 | Pairs: 0/8';
+ document.getElementById('ms').textContent='Player 1: find a pair!';
  let board=document.getElementById('memoryBoard');board.innerHTML='';
  deck.forEach((emoji,i)=>{
-  let b=document.createElement('button');b.className='card';b.textContent='❔';b.dataset.index=i;
+  let b=document.createElement('button');b.className='card';b.textContent='❔';
   b.onclick=()=>memoryFlip(b,emoji);board.appendChild(b);
  });
 }
@@ -212,14 +283,23 @@ function memoryFlip(b,emoji){
  if(lock||b.classList.contains('matched')||b.textContent!=='❔')return;
  b.textContent=emoji;
  if(!first){first=b;return}
- moveCount++;document.getElementById('moves').textContent=moveCount;
+ moves++;
  if(first.textContent===b.textContent){
-  first.classList.add('matched');b.classList.add('matched');first=null;
-  pairCount++;document.getElementById('pairs').textContent=pairCount;
-  if(pairCount===8)document.getElementById('ms').textContent='🏆 Amazing! You found every pair!';
+  first.classList.add('matched');b.classList.add('matched');first=null;pairs++;
+  if(document.getElementById('mMode').value==='two'){if(player===1)p1++;else p2++}
+  document.getElementById('mScore').textContent=`Moves: ${moves} | Pairs: ${pairs}/8 | P1: ${p1} P2: ${p2}`;
+  if(pairs===8){
+   saveBest('memoryBest',8);
+   let msg=document.getElementById('mMode').value==='two'?(p1>p2?'Player 1 wins!':p2>p1?'Player 2 wins!':"It's a draw!"):'🏆 You found all pairs!';
+   document.getElementById('ms').textContent=msg;
+  }else document.getElementById('ms').textContent='Great match! Player '+player+' continues.';
  }else{
   lock=true;let prev=first;first=null;
-  setTimeout(()=>{prev.textContent='❔';b.textContent='❔';lock=false},700);
+  document.getElementById('mScore').textContent=`Moves: ${moves} | Pairs: ${pairs}/8 | P1: ${p1} P2: ${p2}`;
+  setTimeout(()=>{
+   prev.textContent='❔';b.textContent='❔';lock=false;
+   if(document.getElementById('mMode').value==='two'){player=player===1?2:1;document.getElementById('ms').textContent='Player '+player+"'s turn!"}
+  },750);
  }
 }
 memoryStart();
