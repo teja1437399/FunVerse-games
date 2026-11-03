@@ -494,7 +494,12 @@ function shStart(){
 }
 function shMove(d){shDir=d}
 function shStop(){shDir=0}
-function shFire(){if(shPlaying)bullets.push({x:ship.x,y:ship.y-18})}
+function shFire(){
+ if(shPlaying){
+  laserSound();
+  bullets.push({x:ship.x,y:ship.y-18});
+ }
+}
 function shUpdate(){
  shTick++;ship.x=Math.max(15,Math.min(305,ship.x+shDir*5));
  if(shTick%24===0)aliens.push({x:20+Math.random()*280,y:15});
