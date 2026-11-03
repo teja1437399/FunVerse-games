@@ -109,13 +109,84 @@ button:active {
   transform: translateY(-5px);
   box-shadow: 0 0 22px #2563eb88;
 }
+/* PREMIUM HOME SCREEN */
+.premium-header {
+  text-align: center;
+  padding: 45px 15px;
+  background: radial-gradient(circle, #30205c, #080b18 75%);
+  border-bottom: 2px solid #8b5cf6;
+  box-shadow: 0 8px 30px #7c3aed55;
+}
+
+.welcome-badge {
+  color: #c4b5fd;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.premium-header h1 {
+  font-size: clamp(28px, 6vw, 48px);
+  color: #ffffff;
+  text-shadow: 0 0 15px #a855f7;
+  animation: neonPulse 2s infinite alternate;
+}
+
+.welcome-text {
+  color: #67e8f9;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.hero-description {
+  color: #ddd6fe;
+  margin: 18px 0;
+}
+
+.play-now-btn {
+  display: inline-block;
+  padding: 13px 30px;
+  margin-top: 12px;
+  color: white;
+  background: linear-gradient(135deg,#9333ea,#2563eb);
+  border: 1px solid #c084fc;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px #9333ea88;
+  transition: 0.3s;
+}
+
+.play-now-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #a855f7;
+}
+
+@keyframes neonPulse {
+  from { text-shadow: 0 0 8px #8b5cf6; }
+  to { text-shadow: 0 0 25px #c084fc, 0 0 40px #7c3aed; }
+} 
 </style>
 </head>
 <body>
-<header>
-<h1> FUNVERSE GAMES</h1>
-<div class="creator">✨ CREATED BY TEJA ✨</div>
-<p>Play • Challenge • Enjoy!</p>
+<header class="premium-header">
+  <div class="welcome-badge">✨ WELCOME TO</div>
+
+  <h1> FUNVERSE GAMES</h1>
+
+  <div class="creator">⚡ CREATED BY TEJA ⚡</div>
+
+  <p class="welcome-text">
+    Play • Challenge • Enjoy!
+  </p>
+
+  <p class="hero-description">
+    Your Ultimate Gaming Zone Starts Here!
+  </p>
+
+  <a href="#games" class="play-now-btn">
+    🚀 PLAY NOW
+  </a>
 </header>
 
 <nav>
