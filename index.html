@@ -529,60 +529,161 @@ sh.addEventListener('pointerup',()=>shPointer=false);
 sh.addEventListener('pointercancel',()=>shPointer=false);
 shDraw();
 
-// PING PONG - TWO PLAYERS
-const pc=document.getElementById('pingCanvas'),px=pc.getContext('2d');
-let paddle1=125,paddle2=125,ball={x:160,y:210,vx:2.5,vy:3},pScore1=0,pScore2=0,pingTimer=null,pingPlaying=false;
+// PING PONG GAME
+const pc = document.getElementById('pingCanvas');
+const px = pc.getContext('2d');
+
+let paddle1 = 125;
+let paddle2 = 125;
+let ball = {x:160,y:210,vx:2.5,vy:3};
+let pScore1 = 0;
+let pScore2 = 0;
+let pingTimer = null;
+let pingPlaying = false;
+
 function pingDraw(){
- px.fillStyle='#071426';px.fillRect(0,0,320,420);
- px.setLineDash([7,8]);px.strokeStyle='#ffffff66';
- px.beginPath();px.moveTo(0,210);px.lineTo(320,210);px.stroke();px.setLineDash([]);
+ px.fillStyle='#071426';
+ px.fillRect(0,0,320,420);
+
+ px.setLineDash([7,8]);
+ px.strokeStyle='#ffffff66';
+ px.beginPath();
+ px.moveTo(0,210);
+ px.lineTo(320,210);
+ px.stroke();
+ px.setLineDash([]);
+
  px.fillStyle='#c084fc';
- px.fillRect(paddle2,12,70,9);px.fillRect(paddle1,399,70,9);
- px.fillStyle='#fef08a';px.beginPath();px.arc(ball.x,ball.y,7,0,Math.PI*2);px.fill();
+ px.fillRect(paddle2,12,70,9);
+ px.fillRect(paddle1,399,70,9);
+
+ px.fillStyle='#fef08a';
+ px.beginPath();
+ px.arc(ball.x,ball.y,7,0,Math.PI*2);
+ px.fill();
 }
+
 function pingScoreText(){
- document.getElementById('pingScore').textContent='Player 1: '+pScore1+' | Player 2: '+pScore2;
+ document.getElementById('pingScore').textContent =
+ 'Player 1: '+pScore1+' | Player 2: '+pScore2;
 }
+
 function pingStart(){
- clearInterval(pingTimer);pScore1=0;pScore2=0;paddle1=125;paddle2=125;
- ball={x:160,y:210,vx:2.5,vy:3};pingPlaying=true;pingScoreText();
- document.getElementById('pingStatus').textContent='Game on! First to 5 points wins.';
- pingTimer=setInterval(pingUpdate,16);pingDraw();
-}
-function pingUpdate(){
- ball.x+=ball.vx;ball.y+=ball.vy;
- if(ball.x<7||ball.x>313)ball.vx*=-1;
- if(ball.vy>0&&ball.y>=390&&ball.x>=paddle1-5&&ball.x<=paddle1+75){
-  ball.vy=-Math.abs(ball.vy)*1.03;ball.vx+=(ball.x-(paddle1+35))*.035;
- }
- if(ball.vy<0&&ball.y<=30&&ball.x>=paddle2-5&&ball.x<=paddle2+75){
-  ball.vy=Math.abs(ball.vy)*1.03;ball.vx+=(ball.x-(paddle2+35))*.035;
- }
- if(ball.y>425){pScore2++;pingPoint('Player 2')}
- if(ball.y< -5){pScore1++;pingPoint('Player 1')}
- ball.vx=Math.max(-5,Math.min(5,ball.vx));pingDraw();
-}
-function pingPoint(winner){
+ clearInterval(pingTimer);
+
+ pScore1=0;
+ pScore2=0;
+ paddle1=125;
+ paddle2=125;
+
+ ball={x:160,y:210,vx:2.5,vy:3};
+ pingPlaying=true;
+
  pingScoreText();
- if(pScore1>=5||pScore2>=5){
-  clearInterval(pingTimer);pingPlaying=false;
-  document.getElementById('pingStatus').textContent=winner+' wins the match!';
-  return;
- }
- document.getElementById('pingStatus').textContent=winner+' scores!';
- ball={x:160,y:210,vx:(Math.random()>.5?2.5:-2.5),vy:(Math.random()>.5?3:-3)};
-}
-function pingMove(e){
- let r=pc.getBoundingClientRect();
- let x=(e.clientX-r.left)*320/r.width,y=(e.clientY-r.top)*420/r.height;
- let pos=Math.max(0,Math.min(250,x-35));
- if(y<210)paddle2=pos;else paddle1=pos;
+
+ document.getElementById('pingStatus').textContent =
+ 'Game on! First to 5 points wins.';
+
+ pingTimer=setInterval(pingUpdate,16);
  pingDraw();
 }
+
+function pingUpdate(){
+ ball.x+=ball.vx;
+ ball.y+=ball.vy;
+
+ if(ball.x<7||ball.x>313){
+  ball.vx*=-1;
+  hitSound();
+ }
+
+ if(
+  ball.vy>0 &&
+  ball.y>=395 &&
+  ball.x>=paddle1-5 &&
+  ball.x<=paddle1+75
+ ){
+  hitSound();
+  ball.vy=-Math.abs(ball.vy)*1.03;
+  ball.vx+=(ball.x-(paddle1+35))*.035;
+ }
+
+ if(
+  ball.vy<0 &&
+  ball.y<=30 &&
+  ball.x>=paddle2-5 &&
+  ball.x<=paddle2+75
+ ){
+  hitSound();
+  ball.vy=Math.abs(ball.vy)*1.03;
+  ball.vx+=(ball.x-(paddle2+35))*.035;
+ }
+
+ if(ball.y>425){
+  pScore2++;
+  pingPoint('Player 2');
+ }
+
+ if(ball.y< -5){
+  pScore1++;
+  pingPoint('Player 1');
+ }
+
+ ball.vx=Math.max(-5,Math.min(5,ball.vx));
+
+ pingDraw();
+}
+
+function pingPoint(winner){
+ pingScoreText();
+
+ if(pScore1>=5||pScore2>=5){
+  clearInterval(pingTimer);
+  pingPlaying=false;
+
+  document.getElementById('pingStatus').textContent =
+  winner+' wins the match!';
+
+  winSound();
+  return;
+ }
+
+ document.getElementById('pingStatus').textContent =
+ winner+' scores!';
+
+ ball={
+  x:160,
+  y:210,
+  vx:(Math.random()>.5?2.5:-2.5),
+  vy:(Math.random()>.5?3:-3)
+ };
+}
+
+function pingMove(e){
+ let r=pc.getBoundingClientRect();
+
+ let x=(e.clientX-r.left)*320/r.width;
+ let y=(e.clientY-r.top)*420/r.height;
+
+ let pos=Math.max(0,Math.min(250,x-35));
+
+ if(y<210){
+  paddle2=pos;
+ }else{
+  paddle1=pos;
+ }
+
+ pingDraw();
+}
+
 pc.addEventListener('pointerdown',pingMove);
+
 pc.addEventListener('pointermove',e=>{
- if(e.buttons||e.pointerType==='touch')pingMove(e);
+ if(e.buttons||e.pointerType==='touch'){
+  pingMove(e);
+ }
 });
+
 pingDraw();
  // FUNVERSE GAMES SOUND SYSTEM
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
