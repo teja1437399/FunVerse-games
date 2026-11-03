@@ -861,6 +861,32 @@ document.addEventListener('click', function(e){
   clickSound();
  }
 }); 
+<script>
+// PLAYER PROFILE
+function savePlayerName(){
+ const input=document.getElementById('playerNameInput');
+ const name=input.value.trim();
+
+ if(!name){
+  alert('Please enter your player name!');
+  return;
+ }
+
+ localStorage.setItem('funversePlayerName',name);
+ document.getElementById('playerDisplay').textContent=name;
+ input.value='';
+}
+
+function loadPlayerName(){
+ const savedName=localStorage.getItem('funversePlayerName');
+
+ if(savedName){
+  document.getElementById('playerDisplay').textContent=savedName;
+  document.getElementById('playerNameInput').value=savedName;
+ }
+}
+
+loadPlayerName();
 </script>
 </body>
 </html>
