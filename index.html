@@ -166,6 +166,56 @@ button:active {
   from { text-shadow: 0 0 8px #8b5cf6; }
   to { text-shadow: 0 0 25px #c084fc, 0 0 40px #7c3aed; }
 } 
+/* PLAYER PROFILE DESIGN */
+.player-profile {
+  text-align: center;
+  padding: 25px 15px;
+}
+
+.player-profile h2 {
+  color: #c4b5fd;
+  text-shadow: 0 0 12px #8b5cf6;
+}
+
+.profile-card {
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 25px;
+  background: linear-gradient(145deg,#17132d,#101c35);
+  border: 1px solid #8b5cf6;
+  border-radius: 20px;
+  box-shadow: 0 0 22px #7c3aed55;
+}
+
+.profile-avatar {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.profile-card h3 {
+  color: #67e8f9;
+  font-size: 23px;
+}
+
+.profile-card input {
+  width: 85%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #8b5cf6;
+  border-radius: 10px;
+  background: #080b18;
+  color: white;
+  text-align: center;
+}
+
+.profile-card button {
+  padding: 12px 22px;
+}
+
+.profile-card p {
+  color: #c4b5fd;
+  margin-top: 18px;
+}
 </style>
 </head>
 <body>
@@ -188,7 +238,27 @@ button:active {
     🚀 PLAY NOW
   </a>
 </header>
+<!-- PLAYER PROFILE -->
+<section class="player-profile">
+  <h2>👤 PLAYER PROFILE</h2>
 
+  <div class="profile-card">
+    <div class="profile-avatar">🎮</div>
+
+    <h3 id="playerDisplay">Player</h3>
+
+    <input
+      type="text"
+      id="playerNameInput"
+      placeholder="Enter your player name"
+      maxlength="20"
+    >
+
+    <button onclick="savePlayerName()">💾 Save Name</button>
+
+    <p>🏆 Welcome to your Gaming Zone!</p>
+  </div>
+</section>
 <nav>
 <button onclick="home()">🏠 Home</button>
 <button onclick="show('tic')">❌ Tic Tac Toe</button>
