@@ -879,7 +879,7 @@ function savePlayerName(){
 
 function loadPlayerName(){
  const savedName=localStorage.getItem('funversePlayerName');
-
+console.log('Saved player name:', savedName);
  if(savedName){
   document.getElementById('playerDisplay').textContent=savedName;
   document.getElementById('playerNameInput').value=savedName;
