@@ -91,6 +91,24 @@ canvas {
 button:active {
   transform: scale(0.96);
 }
+ /* GAME CARD GLOW ANIMATION */
+.game-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  box-shadow: 0 0 25px #8b5cf6aa;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 22px #2563eb88;
+}
 </style>
 </head>
 <body>
