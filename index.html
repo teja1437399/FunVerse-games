@@ -3,1446 +3,1451 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FUNVERSE GAMES — Enter The Play Universe</title>
-
-<meta name="description" content="Enter FUNVERSE GAMES, a neon gaming universe by Teja. Play free arcade games, complete challenges, earn XP and beat your high scores.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://teja1437399.github.io/FunVerse-games/">
-
-<meta property="og:title" content="FUNVERSE GAMES — Enter The Play Universe">
-<meta property="og:description" content="Play, explore, complete challenges and level up in FUNVERSE GAMES.">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#080817">
+<meta name="description" content="FUNVERSE GAMES - Enter the ultimate gaming universe. Play free mini games, beat high scores and level up!">
+<title>FUNVERSE GAMES | Play Beyond Limits</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 :root{
---bg:#070711;
---panel:#111126;
---purple:#9b5cff;
---pink:#ff45b7;
---cyan:#32eaff;
---gold:#ffd166;
---white:#f7f5ff;
---muted:#aaa9c5;
+ --bg:#080817;
+ --panel:#121329;
+ --purple:#a66bff;
+ --pink:#ff4fbd;
+ --cyan:#40edff;
+ --gold:#ffd66b;
+ --text:#f8f5ff;
+ --muted:#aaa9c7;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 
 html{scroll-behavior:smooth}
 
 body{
-margin:0;
-background:var(--bg);
-color:var(--white);
-font-family:Arial,Helvetica,sans-serif;
-overflow-x:hidden;
+ background:
+ radial-gradient(ellipse at 15% 10%,#28104b 0,transparent 38%),
+ radial-gradient(ellipse at 90% 35%,#102e4d 0,transparent 35%),
+ var(--bg);
+ color:var(--text);
+ font-family:Poppins,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
 }
 
-button,a{font:inherit}
+button,input{font:inherit}
 button{cursor:pointer}
 
 #particles{
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
-z-index:-2;
-pointer-events:none;
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ z-index:-1;
+ pointer-events:none;
 }
 
-body:before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 15% 20%,#722aff25,transparent 35%),
-radial-gradient(circle at 85% 30%,#00d9ff18,transparent 35%),
-radial-gradient(circle at 50% 90%,#ff36ae12,transparent 35%);
-z-index:-1;
-pointer-events:none;
-}
-
-.glow{
-text-shadow:0 0 10px var(--purple),0 0 30px #9b5cff88;
+.container{
+ width:min(1160px,92%);
+ margin:auto;
 }
 
 header{
-min-height:650px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:70px 18px;
-position:relative;
-overflow:hidden;
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:rgba(8,8,23,.82);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid #ffffff14;
 }
+
+.nav{
+ min-height:72px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
+}
+
+.logo{
+ font-family:Orbitron,sans-serif;
+ font-weight:900;
+ font-size:clamp(17px,3vw,25px);
+ letter-spacing:1px;
+ background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+ color:transparent;
+ background-clip:text;
+}
+
+.nav-links{
+ display:flex;
+ gap:22px;
+ align-items:center;
+}
+
+.nav-links a{
+ color:var(--muted);
+ text-decoration:none;
+ font-size:13px;
+ transition:.25s;
+}
+
+.nav-links a:hover{color:var(--cyan)}
 
 .hero{
-max-width:850px;
-animation:heroEnter 1.2s ease both;
+ min-height:480px;
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ align-items:center;
+ gap:20px;
+ padding:65px 0 45px;
 }
 
-@keyframes heroEnter{
-from{opacity:0;transform:translateY(45px) scale(.96)}
-to{opacity:1;transform:translateY(0) scale(1)}
-}
-
-.orbit{
-width:170px;
-height:170px;
-margin:0 auto 25px;
-border:2px solid #9b5cff88;
-border-radius:50%;
-display:grid;
-place-items:center;
-position:relative;
-box-shadow:0 0 35px #9b5cff55,inset 0 0 30px #9b5cff33;
-animation:float 4s ease-in-out infinite;
-}
-
-.orbit:before{
-content:"";
-position:absolute;
-inset:-13px;
-border:2px dashed var(--cyan);
-border-radius:50%;
-animation:spin 14s linear infinite;
-}
-
-.orbit:after{
-content:"";
-position:absolute;
-inset:15px;
-border:1px solid var(--pink);
-border-radius:50%;
-animation:spin 9s linear infinite reverse;
-}
-
-.orbit span{
-font-size:75px;
-filter:drop-shadow(0 0 18px var(--cyan));
-}
-
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes float{50%{transform:translateY(-15px)}}
-
-.eyebrow{
-color:var(--cyan);
-letter-spacing:5px;
-font-weight:bold;
-font-size:13px;
+.tag{
+ display:inline-block;
+ padding:8px 14px;
+ border:1px solid #a66bff66;
+ background:#a66bff18;
+ border-radius:30px;
+ color:#d6baff;
+ font-size:12px;
+ letter-spacing:1px;
 }
 
 .hero h1{
-font-size:clamp(40px,8vw,82px);
-line-height:1.05;
-margin:18px 0;
-background:linear-gradient(90deg,var(--cyan),white,var(--pink),var(--purple));
-background-size:250%;
-color:transparent;
-background-clip:text;
--webkit-background-clip:text;
-animation:gradientMove 5s linear infinite;
+ font-family:Orbitron,sans-serif;
+ font-size:clamp(34px,6vw,68px);
+ line-height:1.16;
+ margin:20px 0;
 }
 
-@keyframes gradientMove{
-to{background-position:250% center}
+.gradient-text{
+ background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+ color:transparent;
+ background-clip:text;
 }
 
 .hero p{
-color:var(--muted);
-font-size:18px;
-max-width:600px;
-margin:15px auto 28px;
+ color:var(--muted);
+ max-width:540px;
+ line-height:1.8;
+ font-size:14px;
 }
 
 .btn{
-display:inline-block;
-padding:14px 25px;
-border:0;
-border-radius:12px;
-color:white;
-font-weight:bold;
-text-decoration:none;
-background:linear-gradient(100deg,var(--purple),var(--pink));
-box-shadow:0 0 22px #9b5cff77;
-transition:.3s;
+ border:0;
+ border-radius:12px;
+ padding:13px 20px;
+ color:white;
+ font-weight:700;
+ background:linear-gradient(110deg,#854aff,#e34db9);
+ box-shadow:0 8px 28px #a34fff44;
+ transition:.25s;
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.04);
-box-shadow:0 0 35px var(--pink);
+ transform:translateY(-3px);
+ box-shadow:0 12px 35px #a34fff77;
 }
 
-.secondary{
-background:#17172d;
-border:1px solid #555080;
-box-shadow:none;
-margin-left:8px;
+.btn-outline{
+ background:#ffffff0a;
+ border:1px solid #ffffff35;
+ box-shadow:none;
 }
 
-nav{
-position:sticky;
-top:0;
-z-index:20;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-padding:13px;
-background:#090916dd;
-backdrop-filter:blur(16px);
-border-block:1px solid #ffffff12;
+.hero-buttons{
+ display:flex;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-top:25px;
 }
 
-nav a{
-color:var(--muted);
-text-decoration:none;
-padding:9px 15px;
-border-radius:9px;
-transition:.25s;
+.hero-art{
+ position:relative;
+ min-height:330px;
+ display:grid;
+ place-items:center;
 }
 
-nav a:hover{
-color:white;
-background:#9b5cff30;
-box-shadow:0 0 15px #9b5cff44;
+.portal{
+ width:min(280px,70vw);
+ aspect-ratio:1;
+ border-radius:50%;
+ border:2px solid #a66bff88;
+ box-shadow:0 0 30px #a66bff66,inset 0 0 35px #40edff33;
+ display:grid;
+ place-items:center;
+ animation:portal 7s linear infinite;
 }
 
-main{
-width:min(1150px,92%);
-margin:auto;
+.portal-inner{
+ width:78%;
+ height:78%;
+ border-radius:50%;
+ border:2px dashed #40edff99;
+ display:grid;
+ place-items:center;
+ animation:portal 12s linear infinite reverse;
 }
 
-.section{
-padding:65px 0;
-scroll-margin-top:85px;
+.portal-emoji{
+ font-size:100px;
+ filter:drop-shadow(0 0 25px #a66bff);
+ animation:float 3s ease-in-out infinite;
 }
 
-.section-heading{
-text-align:center;
-margin-bottom:30px;
+.float-card{
+ position:absolute;
+ background:#191831dd;
+ border:1px solid #ffffff25;
+ padding:12px 16px;
+ border-radius:14px;
+ backdrop-filter:blur(12px);
+ box-shadow:0 10px 35px #0007;
+ font-size:12px;
+ animation:float 4s ease-in-out infinite;
 }
 
-.section-heading h2{
-font-size:clamp(28px,5vw,42px);
-margin:0 0 8px;
+.float-card.one{top:25px;right:0}
+.float-card.two{bottom:30px;left:0;animation-delay:1s}
+
+@keyframes portal{to{transform:rotate(360deg)}}
+@keyframes float{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-13px)}
 }
 
-.section-heading p{
-color:var(--muted);
+.section-title{
+ font-family:Orbitron,sans-serif;
+ font-size:clamp(20px,4vw,30px);
+ margin-bottom:10px;
 }
 
-.neon-line{
-width:90px;
-height:4px;
-margin:12px auto;
-border-radius:10px;
-background:linear-gradient(90deg,var(--cyan),var(--pink));
-box-shadow:0 0 15px var(--cyan);
+.section-sub{
+ color:var(--muted);
+ font-size:13px;
+ margin-bottom:25px;
 }
 
 .dashboard{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
+ margin:20px 0 65px;
 }
 
 .stat{
-background:linear-gradient(145deg,#17172e,#10101e);
-border:1px solid #343052;
-padding:20px;
-border-radius:16px;
-text-align:center;
-transition:.3s;
+ padding:19px;
+ background:linear-gradient(145deg,#1b1a39,#111126);
+ border:1px solid #ffffff16;
+ border-radius:17px;
+ transition:.25s;
 }
 
 .stat:hover{
-transform:translateY(-6px);
-border-color:var(--cyan);
-box-shadow:0 0 25px #32eaff22;
+ transform:translateY(-5px);
+ border-color:#a66bff88;
 }
 
-.stat span{
-display:block;
-font-size:30px;
+.stat-icon{font-size:24px}
+.stat-label{color:var(--muted);font-size:12px;margin-top:8px}
+.stat-value{font-family:Orbitron,sans-serif;font-size:23px;margin-top:5px}
+
+.profile-section{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:22px;
+ margin-bottom:70px;
 }
 
-.stat strong{
-display:block;
-font-size:25px;
-color:var(--cyan);
-margin-top:7px;
+.panel{
+ background:linear-gradient(145deg,#191832dd,#101022ee);
+ border:1px solid #ffffff1b;
+ border-radius:22px;
+ padding:23px;
+ box-shadow:0 15px 45px #0003;
 }
 
-.profile{
-background:linear-gradient(145deg,#17172e,#10101e);
-border:1px solid #39315e;
-border-radius:20px;
-padding:25px;
-text-align:center;
-box-shadow:0 0 30px #9b5cff13;
+.profile-top{
+ display:flex;
+ align-items:center;
+ gap:18px;
+ margin:18px 0;
 }
 
-.avatars{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-margin:20px 0;
+.profile-avatar{
+ width:90px;
+ height:90px;
+ flex-shrink:0;
+ display:grid;
+ place-items:center;
+ border-radius:25px;
+ font-size:48px;
+ background:linear-gradient(145deg,#5426a4,#182c61);
+ border:2px solid #c28aff;
+ box-shadow:0 0 25px #a66bff66;
+ animation:avatarGlow 3s ease-in-out infinite;
 }
 
-.avatar{
-background:#24213e;
-border:1px solid #514477;
-border-radius:12px;
-font-size:25px;
-padding:12px;
-transition:.25s;
+@keyframes avatarGlow{
+ 50%{box-shadow:0 0 35px #ff4fbd99;transform:rotate(3deg) scale(1.04)}
 }
 
-.avatar:hover,.avatar.selected{
-transform:translateY(-5px);
-border-color:var(--cyan);
-box-shadow:0 0 18px #32eaff55;
+.profile-name{
+ font-family:Orbitron,sans-serif;
+ font-size:18px;
+ overflow-wrap:anywhere;
 }
 
-.profile input{
-max-width:300px;
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #514477;
-background:#090916;
-color:white;
+.profile-level{
+ color:var(--gold);
+ font-size:12px;
+ margin-top:7px;
 }
 
-.game-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
+.avatar-list{
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:8px;
+ margin:15px 0;
 }
 
-.game-card{
-position:relative;
-overflow:hidden;
-background:linear-gradient(145deg,#19182f,#0e1020);
-border:1px solid #373252;
-border-radius:19px;
-padding:22px;
-transition:transform .35s,border-color .35s,box-shadow .35s;
+.avatar-choice{
+ min-width:0;
+ aspect-ratio:1;
+ border-radius:12px;
+ border:1px solid #ffffff25;
+ background:#ffffff0b;
+ font-size:25px;
+ transition:.2s;
 }
 
-.game-card:before{
-content:"";
-position:absolute;
-width:150px;
-height:150px;
-background:var(--purple);
-filter:blur(90px);
-opacity:.15;
-top:-70px;
-right:-60px;
-pointer-events:none;
+.avatar-choice:hover,
+.avatar-choice.selected{
+ border-color:var(--cyan);
+ background:#40edff20;
+ transform:translateY(-3px);
+ box-shadow:0 0 15px #40edff55;
 }
 
-.game-card:hover{
-transform:translateY(-10px) scale(1.025);
-border-color:var(--cyan);
-box-shadow:0 15px 35px #32eaff20;
+.name-input{
+ width:100%;
+ background:#080817;
+ color:white;
+ border:1px solid #ffffff30;
+ padding:12px;
+ border-radius:10px;
+ outline:none;
+ margin:10px 0;
 }
 
-.game-card .icon{
-font-size:48px;
-display:block;
-margin-bottom:12px;
-transition:.4s;
-}
+.name-input:focus{border-color:var(--cyan)}
 
-.game-card:hover .icon{
-transform:scale(1.2) rotate(-8deg);
-}
-
-.game-card h3{
-margin:5px 0;
-font-size:21px;
-}
-
-.game-card p{
-color:var(--muted);
-min-height:48px;
-}
-
-.play-btn{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #7052a9;
-background:linear-gradient(90deg,#6c3bd0,#b13eae);
-color:white;
-font-weight:bold;
-transition:.3s;
-}
-
-.play-btn:hover{
-letter-spacing:1px;
-box-shadow:0 0 20px #b13eae77;
-}
-
-.challenge{
-border:1px solid #725b36;
-border-radius:20px;
-padding:25px;
-background:linear-gradient(120deg,#211a30,#171629);
-text-align:center;
-}
-
-.challenge h3{color:var(--gold)}
-
-.progress{
-height:12px;
-background:#29263a;
-border-radius:20px;
-overflow:hidden;
-margin:18px 0;
+.progress-track{
+ height:9px;
+ border-radius:20px;
+ background:#ffffff16;
+ overflow:hidden;
+ margin-top:12px;
 }
 
 .progress-fill{
-height:100%;
-width:0;
-background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-box-shadow:0 0 15px var(--cyan);
-transition:width .5s;
+ height:100%;
+ width:0;
+ border-radius:20px;
+ background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+ transition:width .5s;
 }
 
-.game-area{
-display:none;
-background:#101020;
-border:1px solid #514477;
-border-radius:18px;
-padding:20px;
-margin-top:25px;
-text-align:center;
+.games-section{padding:20px 0 65px}
+
+.game-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
 }
 
-.game-area.active{
-display:block;
-animation:heroEnter .4s ease;
+.game-card{
+ position:relative;
+ overflow:hidden;
+ padding:22px;
+ border-radius:20px;
+ min-height:190px;
+ background:linear-gradient(145deg,#1d1a3d,#111126);
+ border:1px solid #ffffff19;
+ transition:transform .3s,border-color .3s,box-shadow .3s;
 }
 
-.game-area button{
-padding:10px 15px;
-border:1px solid #62518e;
-border-radius:9px;
-background:#272342;
-color:white;
-margin:5px;
+.game-card::before{
+ content:"";
+ position:absolute;
+ width:150px;
+ height:150px;
+ border-radius:50%;
+ background:#a66bff20;
+ filter:blur(25px);
+ right:-55px;
+ top:-55px;
+ transition:.3s;
 }
 
-.game-area canvas{
-max-width:100%;
-background:#050510;
-border:1px solid #34345b;
-border-radius:12px;
-touch-action:none;
+.game-card:hover{
+ transform:translateY(-8px);
+ border-color:#a66bff99;
+ box-shadow:0 15px 35px #0006,0 0 20px #a66bff22;
 }
+
+.game-card:hover::before{background:#ff4fbd44}
+
+.game-icon{
+ font-size:43px;
+ display:block;
+ margin-bottom:14px;
+ transition:.3s;
+}
+
+.game-card:hover .game-icon{
+ transform:scale(1.2) rotate(-7deg);
+}
+
+.game-card h3{font-size:17px;margin-bottom:7px}
+.game-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.play-btn{margin-top:16px;padding:9px 16px;font-size:12px}
+
+.game-area-section{padding:10px 0 60px}
+
+.game-box{
+ display:none;
+ padding:22px;
+ border-radius:22px;
+ border:1px solid #a66bff66;
+ background:#111126;
+ box-shadow:0 0 35px #a66bff20;
+}
+
+.game-box.active{display:block;animation:appear .4s ease}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.game-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ margin-bottom:20px;
+}
+
+.game-heading h2{font-family:Orbitron,sans-serif;font-size:19px}
+
+.close-btn{
+ background:#ff4fbd20;
+ color:#ff91d5;
+ border:1px solid #ff4fbd66;
+ border-radius:10px;
+ padding:9px 13px;
+}
+
+#gameArea{text-align:center;min-height:120px}
 
 .score-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:14px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin:20px 0 65px;
 }
 
-.score-card{
-background:#15152a;
-border:1px solid #373252;
-border-radius:15px;
-padding:18px;
-text-align:center;
+.score-item{
+ text-align:center;
+ background:#ffffff09;
+ border:1px solid #ffffff18;
+ padding:16px 8px;
+ border-radius:14px;
 }
 
-.score-card strong{
-display:block;
-font-size:28px;
-color:var(--cyan);
+.score-item span{display:block;font-size:12px;color:var(--muted)}
+.score-item strong{display:block;margin-top:7px;font-family:Orbitron,sans-serif}
+
+.challenge{
+ display:grid;
+ grid-template-columns:1fr auto;
+ gap:20px;
+ align-items:center;
+ background:linear-gradient(100deg,#25174b,#152d49);
+ border:1px solid #a66bff55;
+ border-radius:20px;
+ padding:23px;
+ margin-bottom:65px;
+}
+
+.challenge h3{margin-bottom:7px}
+.challenge p{font-size:12px;color:var(--muted)}
+
+.faq{
+ padding:20px 0 60px;
 }
 
 .faq details{
-background:#141428;
-border:1px solid #35314e;
-border-radius:12px;
-padding:16px;
-margin:10px 0;
+ background:#ffffff09;
+ border:1px solid #ffffff18;
+ border-radius:12px;
+ padding:15px;
+ margin:10px 0;
 }
 
-.faq summary{cursor:pointer;font-weight:bold}
-.faq p{color:var(--muted)}
+.faq summary{cursor:pointer;font-weight:600;font-size:13px}
+.faq details p{color:var(--muted);font-size:12px;margin-top:10px;line-height:1.7}
 
 footer{
-text-align:center;
-padding:35px 15px;
-border-top:1px solid #ffffff15;
-color:var(--muted);
+ border-top:1px solid #ffffff17;
+ padding:28px 0;
+ text-align:center;
+ color:var(--muted);
+ font-size:12px;
 }
 
-@media(max-width:600px){
-header{min-height:570px}
-.orbit{width:135px;height:135px}
-.orbit span{font-size:60px}
-.section{padding:45px 0}
-.secondary{margin:10px 0 0}
+@media(max-width:760px){
+ .hero{grid-template-columns:1fr;text-align:center;padding-top:45px}
+ .hero p{margin:auto}
+ .hero-buttons{justify-content:center}
+ .hero-art{min-height:280px}
+ .profile-section{grid-template-columns:1fr}
+ .game-grid{grid-template-columns:repeat(2,1fr)}
+ .dashboard{grid-template-columns:repeat(2,1fr)}
+ .nav-links{gap:10px}
+ .nav-links a{font-size:11px}
 }
 
-@media(prefers-reduced-motion:reduce){
-*,*::before,*::after{
-animation:none!important;
-transition:none!important;
-scroll-behavior:auto!important;
-}
+@media(max-width:420px){
+ .game-grid{grid-template-columns:1fr}
+ .score-grid{grid-template-columns:repeat(2,1fr)}
+ .avatar-list{grid-template-columns:repeat(6,1fr)}
+ .challenge{grid-template-columns:1fr}
+ .nav{flex-wrap:wrap;padding:12px 0}
+ .nav-links{width:100%;justify-content:space-between}
 }
 </style>
 </head>
-<body>
 
+<body>
 <canvas id="particles"></canvas>
 
 <header>
-<div class="hero">
-<div class="eyebrow">✦ YOUR NEXT GAMING DESTINATION ✦</div>
-<div class="orbit"><span>🎮</span></div>
-<h1>FUNVERSE GAMES</h1>
-<p>Enter the universe of fun. Play exciting mini games, complete challenges, earn XP and beat your best scores!</p>
-<a class="btn" href="#games">🚀 ENTER THE ARCADE</a>
-<a class="btn secondary" href="#profile">MY PLAYER PROFILE</a>
-</div>
+ <div class="container nav">
+  <div class="logo">✦ FUNVERSE</div>
+  <nav class="nav-links">
+   <a href="#home">HOME</a>
+   <a href="#profile">PROFILE</a>
+   <a href="#games">GAMES</a>
+   <a href="#scores">SCORES</a>
+  </nav>
+ </div>
 </header>
 
-<nav>
-<a href="#profile">👤 Profile</a>
-<a href="#games">🎮 Games</a>
-<a href="#challenge">⚡ Challenge</a>
-<a href="#scores">🏆 Scores</a>
-<a href="#faq">❓ FAQ</a>
-</nav>
+<main class="container">
 
-<main>
+<section class="hero" id="home">
+ <div>
+  <span class="tag">⚡ THE ULTIMATE GAMING UNIVERSE</span>
+  <h1>PLAY BEYOND<br><span class="gradient-text">LIMITS.</span></h1>
+  <p>
+   Welcome to FUNVERSE. Enter a universe of challenges,
+   unlock your gaming power, beat your high scores and
+   become a legend. Your next adventure starts here!
+  </p>
+  <div class="hero-buttons">
+   <button class="btn" onclick="document.querySelector('#games').scrollIntoView({behavior:'smooth'})">🚀 EXPLORE GAMES</button>
+   <button class="btn btn-outline" onclick="document.querySelector('#profile').scrollIntoView({behavior:'smooth'})">👤 MY PROFILE</button>
+  </div>
+ </div>
 
-<section class="section" id="dashboard">
-<div class="section-heading">
-<h2>YOUR GAMING HUB</h2>
-<div class="neon-line"></div>
-<p>Your arcade adventure starts here.</p>
-</div>
-<div class="dashboard">
-<div class="stat"><span>🎮</span>Games<strong>7</strong></div>
-<div class="stat"><span>⭐</span>Player XP<strong id="xp">0</strong></div>
-<div class="stat"><span>🏅</span>Player Level<strong id="level">1</strong></div>
-<div class="stat"><span>🔥</span>Challenges<strong id="challengeCount">0</strong></div>
-</div>
+ <div class="hero-art">
+  <div class="portal">
+   <div class="portal-inner">
+    <div class="portal-emoji">🎮</div>
+   </div>
+  </div>
+  <div class="float-card one">⚡ LEVEL UP!</div>
+  <div class="float-card two">🏆 YOUR NEXT VICTORY</div>
+ </div>
 </section>
 
-<section class="section" id="profile">
-<div class="section-heading">
-<h2>👤 PLAYER PROFILE</h2>
-<div class="neon-line"></div>
-<p>Choose your gaming identity.</p>
-</div>
-<div class="profile">
-<h3 id="welcome">🎮 Welcome, Player!</h3>
-<div class="avatars">
-<button class="avatar selected" data-avatar="🎮">🎮</button>
-<button class="avatar" data-avatar="👑">👑</button>
-<button class="avatar" data-avatar="🥷">🥷</button>
-<button class="avatar" data-avatar="🤖">🤖</button>
-<button class="avatar" data-avatar="🦊">🦊</button>
-<button class="avatar" data-avatar="🐉">🐉</button>
-</div>
-<input id="playerName" maxlength="18" placeholder="Enter your gamer name">
-<button class="btn" id="saveProfile">SAVE PROFILE</button>
-<p id="profileMessage">Your profile is saved on this device.</p>
-</div>
+<section class="dashboard">
+ <div class="stat">
+  <div class="stat-icon">⭐</div>
+  <div class="stat-label">TOTAL XP</div>
+  <div class="stat-value" id="xp">0</div>
+ </div>
+ <div class="stat">
+  <div class="stat-icon">👑</div>
+  <div class="stat-label">PLAYER LEVEL</div>
+  <div class="stat-value" id="level">1</div>
+ </div>
+ <div class="stat">
+  <div class="stat-icon">🎯</div>
+  <div class="stat-label">DAILY CHALLENGE</div>
+  <div class="stat-value" id="challengeCount">0/1</div>
+ </div>
+ <div class="stat">
+  <div class="stat-icon">🎮</div>
+  <div class="stat-label">AVAILABLE GAMES</div>
+  <div class="stat-value">07</div>
+ </div>
 </section>
 
-<section class="section" id="games">
-<div class="section-heading">
-<h2>🎮 THE ARCADE</h2>
-<div class="neon-line"></div>
-<p>Choose your game. Start your mission. Beat your record!</p>
-</div>
+<section class="profile-section" id="profile">
 
-<div class="game-grid">
-<article class="game-card">
-<span class="icon">❎</span><h3>Tic Tac Toe</h3>
-<p>Challenge a friend in the classic X and O battle.</p>
-<button class="play-btn" data-open="tic">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">🐍</span><h3>Snake</h3>
-<p>Collect food, grow longer and beat your best score.</p>
-<button class="play-btn" data-open="snake">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">✊</span><h3>Rock Paper Scissors</h3>
-<p>Can you outsmart the computer?</p>
-<button class="play-btn" data-open="rps">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">🧠</span><h3>Memory Match</h3>
-<p>Find matching pairs and test your memory.</p>
-<button class="play-btn" data-open="memory">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">🚀</span><h3>Space Shooter</h3>
-<p>Take control of your ship and hit your targets.</p>
-<button class="play-btn" data-open="space">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">🏓</span><h3>Ping Pong</h3>
-<p>Keep the ball in play and build your score.</p>
-<button class="play-btn" data-open="ping">PLAY NOW ➜</button>
-</article>
-<article class="game-card">
-<span class="icon">🔢</span><h3>2048 Puzzle</h3>
-<p>Combine number tiles and reach the 2048 tile.</p>
-<button class="play-btn" data-open="2048">PLAY NOW ➜</button>
-</article>
-</div>
+ <div class="panel">
+  <span class="tag">👤 PLAYER IDENTITY</span>
+  <h2 class="section-title" style="margin-top:15px">YOUR PROFILE</h2>
 
-<div class="game-area" id="gameBox">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-<h2 id="gameTitle">GAME</h2>
-<button id="closeGame">✕ CLOSE</button>
-</div>
-<div id="gameArea"></div>
-</div>
+  <div class="profile-top">
+   <div class="profile-avatar" id="profileAvatar">🎮</div>
+   <div>
+    <div class="profile-name" id="welcome">PLAYER ONE</div>
+    <div class="profile-level" id="profileLevel">⭐ LEVEL 1 GAMER</div>
+   </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted)">Choose your gaming avatar</p>
+  <div class="avatar-list">
+   <button class="avatar-choice selected" data-avatar="🎮">🎮</button>
+   <button class="avatar-choice" data-avatar="🦊">🦊</button>
+   <button class="avatar-choice" data-avatar="🐉">🐉</button>
+   <button class="avatar-choice" data-avatar="👾">👾</button>
+   <button class="avatar-choice" data-avatar="🤖">🤖</button>
+   <button class="avatar-choice" data-avatar="🦁">🦁</button>
+   <button class="avatar-choice" data-avatar="🥷">🥷</button>
+   <button class="avatar-choice" data-avatar="🧙">🧙</button>
+   <button class="avatar-choice" data-avatar="🚀">🚀</button>
+   <button class="avatar-choice" data-avatar="🐺">🐺</button>
+   <button class="avatar-choice" data-avatar="👑">👑</button>
+   <button class="avatar-choice" data-avatar="⚡">⚡</button>
+  </div>
+
+  <label style="font-size:12px;color:var(--muted)" for="playerName">GAMER NAME</label>
+  <input class="name-input" id="playerName" maxlength="18" placeholder="Enter your gamer name">
+  <button class="btn" id="saveProfile">SAVE PROFILE</button>
+  <p id="profileMessage" style="font-size:12px;color:var(--cyan);margin-top:10px"></p>
+ </div>
+
+ <div class="panel">
+  <span class="tag">🏆 YOUR PROGRESS</span>
+  <h2 class="section-title" style="margin-top:15px">LEVEL JOURNEY</h2>
+  <div style="font-size:65px;text-align:center;margin:20px;filter:drop-shadow(0 0 20px #a66bff)">🏆</div>
+  <h3 style="text-align:center" id="journeyTitle">RISING GAMER</h3>
+  <p style="color:var(--muted);font-size:12px;text-align:center;margin-top:8px">Collect XP by playing games and unlock new levels.</p>
+  <div style="display:flex;justify-content:space-between;margin-top:25px;font-size:12px">
+   <span>LEVEL PROGRESS</span>
+   <strong id="xpProgressText">0 / 100 XP</strong>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="xpProgress"></div></div>
+ </div>
+
 </section>
 
-<section class="section" id="challenge">
-<div class="section-heading">
-<h2>⚡ DAILY CHALLENGE</h2>
-<div class="neon-line"></div>
-<p>A small mission makes every visit more exciting.</p>
-</div>
-<div class="challenge">
-<h3>🎯 Today's Mission</h3>
-<p id="dailyTask">Play any game today and earn your first XP!</p>
-<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-<p id="challengeProgress">0 / 1 completed</p>
-<button class="btn" id="claimChallenge">CLAIM DAILY XP</button>
-</div>
+<section class="games-section" id="games">
+ <span class="tag">🎮 GAME COLLECTION</span>
+ <h2 class="section-title" style="margin-top:15px">CHOOSE YOUR <span class="gradient-text">ADVENTURE</span></h2>
+ <p class="section-sub">Seven challenges. One gaming universe. How far can you go?</p>
+
+ <div class="game-grid">
+  <article class="game-card">
+   <span class="game-icon">❌</span>
+   <h3>Tic Tac Toe</h3>
+   <p>Challenge a friend in the classic X and O battle.</p>
+   <button class="btn play-btn" data-open="tic">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">🐍</span>
+   <h3>Snake Mania</h3>
+   <p>Eat, grow and beat your own high score.</p>
+   <button class="btn play-btn" data-open="snake">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">✊</span>
+   <h3>Rock Paper Scissors</h3>
+   <p>Can you defeat the computer in this classic game?</p>
+   <button class="btn play-btn" data-open="rps">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">🧠</span>
+   <h3>Memory Match</h3>
+   <p>Test your memory and find all matching pairs.</p>
+   <button class="btn play-btn" data-open="memory">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">🚀</span>
+   <h3>Space Shooter</h3>
+   <p>Defend your spaceship and survive the challenge.</p>
+   <button class="btn play-btn" data-open="space">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">🏓</span>
+   <h3>Neon Ping Pong</h3>
+   <p>Keep the ball alive and beat your best score.</p>
+   <button class="btn play-btn" data-open="ping">PLAY NOW ↗</button>
+  </article>
+
+  <article class="game-card">
+   <span class="game-icon">🔢</span>
+   <h3>2048 Puzzle</h3>
+   <p>Combine number tiles and reach the 2048 tile.</p>
+   <button class="btn play-btn" data-open="2048">PLAY NOW ↗</button>
+  </article>
+ </div>
 </section>
 
-<section class="section" id="scores">
-<div class="section-heading">
-<h2>🏆 YOUR RECORDS</h2>
-<div class="neon-line"></div>
-<p>Your best scores are saved on this device.</p>
-</div>
-<div class="score-grid">
-<div class="score-card">🐍 Snake<strong id="snakeBest">0</strong></div>
-<div class="score-card">🚀 Space Shooter<strong id="spaceBest">0</strong></div>
-<div class="score-card">🏓 Ping Pong<strong id="pingBest">0</strong></div>
-<div class="score-card">🔢 2048<strong id="2048Best">0</strong></div>
-</div>
+<section class="game-area-section">
+ <div class="game-box" id="gameBox">
+  <div class="game-heading">
+   <h2 id="gameTitle">GAME</h2>
+   <button class="close-btn" id="closeGame">✕ CLOSE</button>
+  </div>
+  <div id="gameArea"></div>
+ </div>
 </section>
 
-<section class="section faq" id="faq">
-<div class="section-heading">
-<h2>❓ PLAYER HELP CENTER</h2>
-<div class="neon-line"></div>
-</div>
-<details><summary>Are all games free?</summary><p>Yes. All seven games are free to play in your browser.</p></details>
-<details><summary>Do I need to install anything?</summary><p>No app installation is required. Open the website and choose a game.</p></details>
-<details><summary>Will my profile and scores be saved?</summary><p>They are saved locally in your browser on this device.</p></details>
-<details><summary>Can I play on a tablet?</summary><p>Yes. The layout supports mobile phones and tablets. Some games also support keyboard controls.</p></details>
+<section class="challenge">
+ <div>
+  <span class="tag">🌟 DAILY MISSION</span>
+  <h3 style="margin-top:13px">PLAY A GAME TODAY!</h3>
+  <p>Complete today's challenge and claim your bonus XP.</p>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <p id="challengeProgress" style="margin-top:8px">0 / 1 completed</p>
+ </div>
+ <button class="btn" id="claimChallenge">CLAIM +25 XP</button>
+</section>
+
+<section id="scores">
+ <span class="tag">🏆 PERSONAL RECORDS</span>
+ <h2 class="section-title" style="margin-top:15px">YOUR BEST SCORES</h2>
+ <p class="section-sub">Your personal records are saved on this device.</p>
+ <div class="score-grid">
+  <div class="score-item"><span>🐍 Snake</span><strong id="snakeBest">0</strong></div>
+  <div class="score-item"><span>🚀 Space Shooter</span><strong id="spaceBest">0</strong></div>
+  <div class="score-item"><span>🏓 Ping Pong</span><strong id="pingBest">0</strong></div>
+  <div class="score-item"><span>🔢 2048</span><strong id="2048Best">0</strong></div>
+ </div>
+</section>
+
+<section class="faq">
+ <span class="tag">❔ QUICK HELP</span>
+ <h2 class="section-title" style="margin-top:15px">FAQ</h2>
+ <details>
+  <summary>Are these games free?</summary>
+  <p>Yes! You can play the games on this website without paying.</p>
+ </details>
+ <details>
+  <summary>Will my profile be saved?</summary>
+  <p>Your gamer name, avatar, XP and scores are saved in your browser on this device.</p>
+ </details>
+ <details>
+  <summary>Can I play on a tablet?</summary>
+  <p>Yes. The website is designed to adapt to mobile phones and tablets.</p>
+ </details>
 </section>
 
 </main>
 
 <footer>
-<p>© <span id="year"></span> FUNVERSE GAMES</p>
-<p>Created with 🎮 by Teja · Play • Challenge • Enjoy</p>
+ <div class="container">
+  <div class="logo" style="margin-bottom:10px">✦ FUNVERSE GAMES</div>
+  <p>ENTER THE UNIVERSE. PLAY YOUR WAY. LEVEL UP.</p>
+  <p style="margin-top:10px">© <span id="year"></span> FUNVERSE GAMES</p>
+ </div>
  </footer>
-<script>
-/* =====================================
-   FUNVERSE GAMES — ANIMATION ENGINE
-===================================== */
+ <script>
+/* =========================
+   FUNVERSE — CORE SYSTEM
+========================= */
 
 const $ = id => document.getElementById(id);
 
-const getData = key => localStorage.getItem("fv_" + key);
-const setData = (key,value) => localStorage.setItem("fv_" + key,value);
+function getData(key, fallback){
+  try{
+    const value=localStorage.getItem(key);
+    return value===null?fallback:JSON.parse(value);
+  }catch(e){
+    return fallback;
+  }
+}
 
-$("year").textContent = new Date().getFullYear();
+function setData(key,value){
+  localStorage.setItem(key,JSON.stringify(value));
+}
+
+$("year").textContent=new Date().getFullYear();
 
 /* PARTICLE BACKGROUND */
 
-const particleCanvas = $("particles");
-const particleCtx = particleCanvas.getContext("2d");
-let particles = [];
+const particleCanvas=$("particles");
+const particleCtx=particleCanvas.getContext("2d");
+let particles=[];
 
 function resizeParticles(){
-    particleCanvas.width = window.innerWidth;
-    particleCanvas.height = window.innerHeight;
-
-    particles = Array.from({length:55},()=>({
-        x:Math.random()*particleCanvas.width,
-        y:Math.random()*particleCanvas.height,
-        size:Math.random()*2+0.5,
-        speed:Math.random()*0.6+0.2,
-        alpha:Math.random()*0.6+0.2
-    }));
+  particleCanvas.width=window.innerWidth;
+  particleCanvas.height=window.innerHeight;
+  particles=Array.from({length:65},()=>({
+    x:Math.random()*particleCanvas.width,
+    y:Math.random()*particleCanvas.height,
+    r:Math.random()*2+0.5,
+    speed:Math.random()*0.6+0.15,
+    alpha:Math.random()*0.7+0.2
+  }));
 }
 
 function animateParticles(){
-    particleCtx.clearRect(0,0,particleCanvas.width,particleCanvas.height);
-
-    particles.forEach(p=>{
-        p.y -= p.speed;
-
-        if(p.y < 0){
-            p.y = particleCanvas.height;
-            p.x = Math.random()*particleCanvas.width;
-        }
-
-        particleCtx.beginPath();
-        particleCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
-        particleCtx.fillStyle=`rgba(90,210,255,${p.alpha})`;
-        particleCtx.shadowBlur=12;
-        particleCtx.shadowColor="#9b5cff";
-        particleCtx.fill();
-    });
-
-    requestAnimationFrame(animateParticles);
+  particleCtx.clearRect(0,0,particleCanvas.width,particleCanvas.height);
+  particles.forEach(p=>{
+    p.y-=p.speed;
+    if(p.y<0){
+      p.y=particleCanvas.height;
+      p.x=Math.random()*particleCanvas.width;
+    }
+    particleCtx.beginPath();
+    particleCtx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    particleCtx.fillStyle=`rgba(120,190,255,${p.alpha})`;
+    particleCtx.fill();
+  });
+  requestAnimationFrame(animateParticles);
 }
 
+window.addEventListener("resize",resizeParticles);
 resizeParticles();
 animateParticles();
-window.addEventListener("resize",resizeParticles);
-
 
 /* PLAYER PROFILE */
 
-let avatar = getData("avatar") || "🎮";
-let player = getData("name") || "Player";
+let avatar=getData("fv_avatar","🎮");
+let playerName=getData("fv_name","PLAYER ONE");
 
 function updateProfile(){
-    $("welcome").textContent = avatar + " Welcome, " + player + "!";
-
-    $("playerName").value = player === "Player" ? "" : player;
-
-    document.querySelectorAll(".avatar").forEach(button=>{
-        button.classList.toggle(
-            "selected",
-            button.dataset.avatar === avatar
-        );
-    });
+  $("profileAvatar").textContent=avatar;
+  $("welcome").textContent=playerName.toUpperCase();
+  $("playerName").value=playerName;
+  document.querySelectorAll(".avatar-choice").forEach(button=>{
+    button.classList.toggle("selected",button.dataset.avatar===avatar);
+  });
 }
 
-document.querySelectorAll(".avatar").forEach(button=>{
-    button.addEventListener("click",()=>{
-        avatar = button.dataset.avatar;
-        setData("avatar",avatar);
-        updateProfile();
-    });
+document.querySelectorAll(".avatar-choice").forEach(button=>{
+  button.addEventListener("click",()=>{
+    avatar=button.dataset.avatar;
+    setData("fv_avatar",avatar);
+    updateProfile();
+    $("profileMessage").textContent="✨ Avatar selected!";
+  });
 });
 
 $("saveProfile").addEventListener("click",()=>{
-    player = $("playerName").value.trim().slice(0,18) || "Player";
-
-    setData("name",player);
-
-    $("profileMessage").textContent = "✨ Profile saved successfully!";
-    updateProfile();
+  const name=$("playerName").value.trim();
+  if(!name){
+    $("profileMessage").textContent="Please enter a gamer name.";
+    return;
+  }
+  playerName=name.slice(0,18);
+  setData("fv_name",playerName);
+  updateProfile();
+  $("profileMessage").textContent="✅ Profile saved successfully!";
 });
 
 updateProfile();
 
-
 /* XP AND LEVEL SYSTEM */
 
-let xp = Number(getData("xp") || 0);
+let xp=getData("fv_xp",0);
 
 function updateXP(){
-    $("xp").textContent = xp;
-    $("level").textContent = Math.floor(xp/100)+1;
+  const level=Math.floor(xp/100)+1;
+  const progress=xp%100;
+
+  $("xp").textContent=xp;
+  $("level").textContent=level;
+  $("profileLevel").textContent="⭐ LEVEL "+level+" GAMER";
+  $("xpProgressText").textContent=progress+" / 100 XP";
+  $("xpProgress").style.width=progress+"%";
+
+  const titles=[
+    "RISING GAMER",
+    "SKILLED PLAYER",
+    "PRO GAMER",
+    "ELITE CHAMPION",
+    "LEGENDARY GAMER"
+  ];
+
+  $("journeyTitle").textContent=titles[Math.min(level-1,4)];
 }
 
 function addXP(amount){
-    xp += amount;
-    setData("xp",xp);
-    updateXP();
+  xp+=amount;
+  setData("fv_xp",xp);
+  updateXP();
 }
 
 updateXP();
 
-
 /* DAILY CHALLENGE */
 
-const today = new Date().toLocaleDateString("en-CA");
-
-let dailyPlayed = getData("dailyPlayed") === today;
-let dailyClaimed = getData("dailyClaimed") === today;
+const today=new Date().toLocaleDateString("en-CA");
+let dailyPlayed=getData("fv_daily_played","");
+let dailyClaimed=getData("fv_daily_claimed","");
 
 function updateChallenge(){
-    $("progressFill").style.width = dailyPlayed ? "100%" : "0%";
-
-    $("challengeProgress").textContent =
-        dailyPlayed ? "1 / 1 completed" : "0 / 1 completed";
-
-    $("dailyTask").textContent =
-        dailyPlayed
-        ? "Mission completed! Claim your daily XP."
-        : "Play any game today and complete your mission!";
-
-    $("claimChallenge").textContent =
-        dailyClaimed ? "ALREADY CLAIMED ✓" : "CLAIM DAILY XP";
-
-    $("claimChallenge").disabled = dailyClaimed;
-    $("claimChallenge").style.opacity = dailyClaimed ? ".5" : "1";
+  const completed=dailyPlayed===today;
+  $("progressFill").style.width=completed?"100%":"0%";
+  $("challengeProgress").textContent=completed?"1 / 1 completed":"0 / 1 completed";
+  $("claimChallenge").disabled=!completed || dailyClaimed===today;
+  $("claimChallenge").textContent=
+    dailyClaimed===today?"CLAIMED ✓":completed?"CLAIM +25 XP":"PLAY A GAME FIRST";
+  $("challengeCount").textContent=dailyClaimed===today?"1/1":"0/1";
 }
 
 function markDailyPlayed(){
-    dailyPlayed = true;
-    setData("dailyPlayed",today);
-    updateChallenge();
+  dailyPlayed=today;
+  setData("fv_daily_played",today);
+  updateChallenge();
 }
 
 $("claimChallenge").addEventListener("click",()=>{
-    if(!dailyPlayed || dailyClaimed){
-        return;
-    }
-
-    dailyClaimed = true;
-    setData("dailyClaimed",today);
-
-    addXP(25);
-
-    $("dailyTask").textContent =
-        "🎉 Great job! You earned 25 XP today!";
-
-    updateChallenge();
+  if(dailyPlayed!==today || dailyClaimed===today)return;
+  dailyClaimed=today;
+  setData("fv_daily_claimed",today);
+  addXP(25);
+  updateChallenge();
 });
-
-if(getData("dailyPlayed") !== today){
-    dailyPlayed = false;
-}
-
-if(getData("dailyClaimed") !== today){
-    dailyClaimed = false;
-}
 
 updateChallenge();
 
+/* GAME WINDOW */
 
-/* GAME SYSTEM */
-
-let timer = null;
-let cleanup = null;
+let timer=null;
+let cleanup=()=>{};
 
 function stop(){
-    if(timer){
-        clearInterval(timer);
-        timer = null;
-    }
-
-    if(cleanup){
-        cleanup();
-        cleanup = null;
-    }
+  if(timer){
+    clearInterval(timer);
+    timer=null;
+  }
+  cleanup();
+  cleanup=()=>{};
 }
 
-function showGame(title,content){
-    stop();
-
-    $("gameTitle").textContent = title;
-    $("gameArea").innerHTML = content;
-
-    $("gameBox").classList.add("active");
-
-    $("gameBox").scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
-
-    markDailyPlayed();
+function showGame(title){
+  stop();
+  $("gameTitle").textContent=title;
+  $("gameBox").classList.add("active");
+  $("gameArea").innerHTML="";
+  $("gameBox").scrollIntoView({behavior:"smooth",block:"start"});
+  markDailyPlayed();
 }
 
 function closeGame(){
-    stop();
-
-    $("gameBox").classList.remove("active");
-    $("gameArea").innerHTML = "";
+  stop();
+  $("gameBox").classList.remove("active");
+  $("gameArea").innerHTML="";
 }
 
 $("closeGame").addEventListener("click",closeGame);
 
+document.querySelectorAll("[data-open]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    openGame(button.dataset.open);
+  });
+});
 
-const bestIds = {
-    snake:"snakeBest",
-    space:"spaceBest",
-    ping:"pingBest",
-    "2048":"2048Best"
-};
+function openGame(name){
+  const games={
+    tic:()=>{showGame("❌ TIC TAC TOE");tic();},
+    snake:()=>{showGame("🐍 SNAKE MANIA");snake();},
+    rps:()=>{showGame("✊ ROCK PAPER SCISSORS");rps();},
+    memory:()=>{showGame("🧠 MEMORY MATCH");memory();},
+    space:()=>{showGame("🚀 SPACE SHOOTER");space();},
+    ping:()=>{showGame("🏓 NEON PING PONG");ping();},
+    "2048":()=>{showGame("🔢 2048 PUZZLE");game2048();}
+  };
+  if(games[name])games[name]();
+}
+
+/* BEST SCORES */
 
 function saveBest(game,score){
-    const old = Number(getData("best_"+game) || 0);
-    const value = Math.max(old,score);
-
-    setData("best_"+game,value);
-
-    if(bestIds[game]){
-        $(bestIds[game]).textContent = value;
-    }
+  const key="fv_best_"+game;
+  const old=getData(key,0);
+  if(score>old)setData(key,score);
+  updateBestScores();
 }
 
-Object.keys(bestIds).forEach(game=>{
-    $(bestIds[game]).textContent =
-        getData("best_"+game) || 0;
-});
-
-
-document.querySelectorAll("[data-open]").forEach(button=>{
-    button.addEventListener("click",()=>{
-        openGame(button.dataset.open);
-    });
-});
-
-function openGame(game){
-    if(game==="tic") tic();
-    if(game==="rps") rps();
-    if(game==="memory") memory();
-    if(game==="snake") snake();
-    if(game==="space") space();
-    if(game==="ping") ping();
-    if(game==="2048") game2048();
+function updateBestScores(){
+  $("snakeBest").textContent=getData("fv_best_snake",0);
+  $("spaceBest").textContent=getData("fv_best_space",0);
+  $("pingBest").textContent=getData("fv_best_ping",0);
+  $("2048Best").textContent=getData("fv_best_2048",0);
 }
 
+updateBestScores();
 
-/* =====================================
-   GAME 1 — TIC TAC TOE
-===================================== */
-
-function tic(){
-
-    showGame("❎ TIC TAC TOE",`
-        <p>Two players take turns. Get three in a row to win.</p>
-        <h3 class="status" id="ticMessage">X's Turn</h3>
-        <div class="board" id="ticBoard"
-        style="grid-template-columns:repeat(3,75px)"></div>
-        <button onclick="tic()">NEW ROUND</button>
-    `);
-
-    let cells = Array(9).fill("");
-    let turn = "X";
-    let finished = false;
-
-    const board = $("ticBoard");
-
-    const wins = [
-        [0,1,2],[3,4,5],[6,7,8],
-        [0,3,6],[1,4,7],[2,5,8],
-        [0,4,8],[2,4,6]
-    ];
-
-    for(let i=0;i<9;i++){
-
-        const button = document.createElement("button");
-
-        button.style.height = "75px";
-        button.style.fontSize = "30px";
-
-        button.addEventListener("click",()=>{
-
-            if(finished || cells[i]) return;
-
-            cells[i] = turn;
-            button.textContent = turn;
-
-            const won = wins.some(line=>
-                line.every(index=>cells[index]===turn)
-            );
-
-            if(won){
-                $("ticMessage").textContent = turn+" WINS! 🎉";
-                finished = true;
-                if(turn==="X") addXP(5);
-            }
-            else if(cells.every(Boolean)){
-                $("ticMessage").textContent = "IT'S A DRAW!";
-                finished = true;
-            }
-            else{
-                turn = turn==="X" ? "O" : "X";
-                $("ticMessage").textContent = turn+"'s Turn";
-            }
-        });
-
-        board.appendChild(button);
-    }
-}
-
-
-/* =====================================
-   GAME 2 — ROCK PAPER SCISSORS
-===================================== */
-
-function rps(){
-
-    showGame("✊ ROCK PAPER SCISSORS",`
-        <h3 class="status" id="rpsMessage">
-        Choose your move!
-        </h3>
-
-        <button data-rps="Rock">✊ ROCK</button>
-        <button data-rps="Paper">✋ PAPER</button>
-        <button data-rps="Scissors">✌️ SCISSORS</button>
-
-        <h3 id="rpsScore">YOU 0 — 0 COMPUTER</h3>
-    `);
-
-    let playerScore = 0;
-    let computerScore = 0;
-
-    document.querySelectorAll("[data-rps]").forEach(button=>{
-
-        button.addEventListener("click",()=>{
-
-            const user = button.dataset.rps;
-
-            const choices = ["Rock","Paper","Scissors"];
-
-            const computer =
-                choices[Math.floor(Math.random()*3)];
-
-            let result = "DRAW!";
-
-            if(user !== computer){
-
-                if(
-                    (user==="Rock" && computer==="Scissors") ||
-                    (user==="Paper" && computer==="Rock") ||
-                    (user==="Scissors" && computer==="Paper")
-                ){
-                    result = "YOU WIN!";
-                    playerScore++;
-                    addXP(3);
-                }
-                else{
-                    result = "COMPUTER WINS!";
-                    computerScore++;
-                }
-            }
-
-            $("rpsMessage").textContent =
-                `${user} vs ${computer} — ${result}`;
-
-            $("rpsScore").textContent =
-                `YOU ${playerScore} — ${computerScore} COMPUTER`;
-        });
-    });
-}
-
-
-/* =====================================
-   GAME 3 — MEMORY MATCH
-===================================== */
-
-function memory(){
-
-    showGame("🧠 MEMORY MATCH",`
-        <h3 class="status" id="memoryMessage">
-        Find all matching pairs!
-        </h3>
-
-        <p id="memoryMoves">Moves: 0</p>
-
-        <div class="board memory-board" id="memoryBoard"></div>
-
-        <button onclick="memory()">RESTART</button>
-    `);
-
-    const symbols = [
-        "🍎","🚀","🐱","⚽",
-        "🌟","🎧","🍕","🦋",
-        "🍎","🚀","🐱","⚽",
-        "🌟","🎧","🍕","🦋"
-    ];
-
-    symbols.sort(()=>Math.random()-.5);
-
-    let first = null;
-    let locked = false;
-    let moves = 0;
-    let matched = 0;
-
-    const board = $("memoryBoard");
-
-    symbols.forEach(symbol=>{
-
-        const button = document.createElement("button");
-
-        button.textContent = "❔";
-
-        button.addEventListener("click",()=>{
-
-            if(locked || button.dataset.done || button===first){
-                return;
-            }
-
-            button.textContent = symbol;
-
-            if(!first){
-                first = button;
-                return;
-            }
-
-            moves++;
-
-            $("memoryMoves").textContent = "Moves: "+moves;
-
-            if(first.textContent===symbol){
-
-                first.dataset.done = "yes";
-                button.dataset.done = "yes";
-
-                matched += 2;
-                first = null;
-
-                if(matched===16){
-
-                    $("memoryMessage").textContent =
-                        "🎉 YOU FOUND ALL PAIRS!";
-
-                    addXP(20);
-                }
-            }
-            else{
-
-                locked = true;
-
-                const previous = first;
-                first = null;
-
-                setTimeout(()=>{
-
-                    previous.textContent = "❔";
-                    button.textContent = "❔";
-
-                    locked = false;
-
-                },650);
-            }
-        });
-
-        board.appendChild(button);
-    });
-}
-
-
-/* =====================================
-   GAME 4 — SNAKE
-===================================== */
-
-function snake(){
-
-    showGame("🐍 SNAKE GAME",`
-        <p class="small">
-        Use arrow keys or swipe on the game board.
-        </p>
-
-        <h3 class="status" id="snakeMessage">
-        Press Start!
-        </h3>
-
-        <canvas id="snakeCanvas" width="320" height="320"></canvas>
-
-        <h3>Score: <span id="snakeValue">0</span></h3>
-
-        <button id="snakeStart">START / RESTART</button>
-    `);
-
-    const canvas = $("snakeCanvas");
-    const ctx = canvas.getContext("2d");
-
-    let direction = {x:1,y:0};
-    let nextDirection = {x:1,y:0};
-
-    let body = [];
-    let food = {};
-    let score = 0;
-
-    function draw(){
-
-        ctx.fillStyle = "#050510";
-        ctx.fillRect(0,0,320,320);
-
-        ctx.fillStyle = "#ff45b7";
-
-        ctx.fillRect(
-            food.x*16,
-            food.y*16,
-            15,15
-        );
-
-        ctx.fillStyle = "#54e6a5";
-
-        body.forEach(part=>{
-            ctx.fillRect(
-                part.x*16,
-                part.y*16,
-                15,15
-            );
-        });
-    }
-
-    function reset(){
-
-        body = [
-            {x:8,y:8},
-            {x:7,y:8},
-            {x:6,y:8}
-        ];
-
-        direction = {x:1,y:0};
-        nextDirection = {x:1,y:0};
-
-        food = {x:14,y:10};
-
-        score = 0;
-
-        $("snakeValue").textContent = score;
-        $("snakeMessage").textContent = "Playing...";
-
-        if(timer) clearInterval(timer);
-
-        draw();
-
-        timer = setInterval(step,115);
-    }
-
-    function step(){
-
-        direction = nextDirection;
-
-        const head = {
-            x:body[0].x+direction.x,
-            y:body[0].y+direction.y
-        };
-
-        const eating =
-            head.x===food.x && head.y===food.y;
-
-        const collisionBody = eating ? body : body.slice(0,-1);
-
-        if(
-            head.x<0 || head.y<0 ||
-            head.x>=20 || head.y>=20 ||
-            collisionBody.some(part=>
-                part.x===head.x && part.y===head.y
-            )
-        ){
-
-            clearInterval(timer);
-            timer = null;
-
-            $("snakeMessage").textContent = "GAME OVER!";
-
-            saveBest("snake",score);
-
-            if(score>0) addXP(5);
-
-            return;
-        }
-
-        body.unshift(head);
-
-        if(eating){
-
-            score += 10;
-
-            $("snakeValue").textContent = score;
-
-            do{
-                food = {
-                    x:Math.floor(Math.random()*20),
-                    y:Math.floor(Math.random()*20)
-                };
-            }
-            while(body.some(part=>
-                part.x===food.x && part.y===food.y
-            ));
-
-        }else{
-            body.pop();
-        }
-
-        draw();
-    }
-
-    function changeDirection(key){
-
-        const directions = {
-            ArrowUp:{x:0,y:-1},
-            ArrowDown:{x:0,y:1},
-            ArrowLeft:{x:-1,y:0},
-            ArrowRight:{x:1,y:0}
-        };
-
-        const next = directions[key];
-
-        if(!next) return;
-
-        if(
-            next.x===-direction.x &&
-            next.y===-direction.y
-        ) return;
-
-        nextDirection = next;
-    }
-
-    function keyboard(e){
-
-        if(
-            ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"]
-            .includes(e.key)
-        ){
-            e.preventDefault();
-            changeDirection(e.key);
-        }
-    }
-
-    window.addEventListener("keydown",keyboard);
-
-    let startX=0,startY=0;
-
-    canvas.addEventListener("pointerdown",e=>{
-        startX=e.clientX;
-        startY=e.clientY;
-    });
-
-    canvas.addEventListener("pointerup",e=>{
-
-        const dx=e.clientX-startX;
-        const dy=e.clientY-startY;
-
-        if(Math.max(Math.abs(dx),Math.abs(dy))<15) return;
-
-        if(Math.abs(dx)>Math.abs(dy)){
-            changeDirection(dx>0?"ArrowRight":"ArrowLeft");
-        }else{
-            changeDirection(dy>0?"ArrowDown":"ArrowUp");
-        }
-    });
-
-    $("snakeStart").onclick=reset;
-
-    cleanup=()=>{
-        window.removeEventListener("keydown",keyboard);
-    };
-
-    draw();
-}
-
-
-/* PART 3 WILL CONTINUE BELOW */
- /* =========================
-   PART 3 — SPACE SHOOTER
+/* =========================
+   TIC TAC TOE
 ========================= */
 
+function tic(){
+  const area=$("gameArea");
+  area.innerHTML=`
+    <p class="muted">Two players — X vs O</p>
+    <h3 id="ticStatus" style="margin:15px">X's Turn</h3>
+    <div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,85px);gap:8px;justify-content:center"></div>
+    <button class="btn" id="ticReset" style="margin-top:18px">↻ RESTART</button>`;
+
+  const boardEl=$("ticBoard");
+  let board=Array(9).fill("");
+  let turn="X";
+  let finished=false;
+
+  function render(){
+    boardEl.innerHTML="";
+    board.forEach((value,index)=>{
+      const cell=document.createElement("button");
+      cell.textContent=value;
+      cell.style.cssText=
+        "height:85px;border-radius:14px;border:1px solid #a66bff66;background:#211b40;color:"+
+        (value==="X"?"#40edff":"#ff4fbd")+
+        ";font-size:35px;font-weight:900";
+      cell.addEventListener("click",()=>play(index));
+      boardEl.appendChild(cell);
+    });
+  }
+
+  function play(index){
+    if(finished || board[index])return;
+    board[index]=turn;
+    render();
+
+    const wins=[
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    const winner=wins.find(line=>line.every(i=>board[i]===turn));
+
+    if(winner){
+      finished=true;
+      $("ticStatus").textContent=turn+" WINS! 🏆";
+      if(turn==="X")addXP(5);
+      return;
+    }
+
+    if(board.every(Boolean)){
+      finished=true;
+      $("ticStatus").textContent="It's a Draw!";
+      return;
+    }
+
+    turn=turn==="X"?"O":"X";
+    $("ticStatus").textContent=turn+"'s Turn";
+  }
+
+  $("ticReset").addEventListener("click",()=>{
+    board=Array(9).fill("");
+    turn="X";
+    finished=false;
+    $("ticStatus").textContent="X's Turn";
+    render();
+  });
+
+  render();
+}
+
+/* =========================
+   ROCK PAPER SCISSORS
+========================= */
+
+function rps(){
+  const area=$("gameArea");
+  area.innerHTML=`
+    <h3>Choose your move!</h3>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0">
+      <button class="btn" data-rps="Rock">✊ Rock</button>
+      <button class="btn" data-rps="Paper">✋ Paper</button>
+      <button class="btn" data-rps="Scissors">✌️ Scissors</button>
+    </div>
+    <h2 id="rpsResult">Ready?</h2>
+    <p id="rpsDetails" class="muted" style="margin-top:10px">You vs Computer</p>
+    <h3 style="margin-top:18px">Wins: <span id="rpsWins">0</span></h3>`;
+
+  let wins=0;
+  let rounds=0;
+
+  document.querySelectorAll("[data-rps]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const player=button.dataset.rps;
+      const choices=["Rock","Paper","Scissors"];
+      const computer=choices[Math.floor(Math.random()*3)];
+
+      let result="It's a Draw!";
+      if(player===computer){
+        result="Draw!";
+      }else if(
+        (player==="Rock"&&computer==="Scissors")||
+        (player==="Paper"&&computer==="Rock")||
+        (player==="Scissors"&&computer==="Paper")
+      ){
+        result="You Win! 🎉";
+        wins++;
+        addXP(3);
+      }else{
+        result="Computer Wins!";
+      }
+
+      rounds++;
+      $("rpsResult").textContent=result;
+      $("rpsDetails").textContent="You: "+player+" | Computer: "+computer;
+      $("rpsWins").textContent=wins;
+    });
+  });
+}
+
+/* =========================
+   MEMORY MATCH
+========================= */
+
+function memory(){
+  const area=$("gameArea");
+  area.innerHTML=`
+    <p class="muted">Find all matching emoji pairs!</p>
+    <h3 style="margin:12px">Moves: <span id="memoryMoves">0</span></h3>
+    <div id="memoryBoard" style="display:grid;grid-template-columns:repeat(4,minmax(55px,70px));gap:9px;justify-content:center"></div>
+    <h3 id="memoryStatus" style="margin-top:18px"></h3>
+    <button class="btn" id="memoryReset" style="margin-top:12px">↻ NEW GAME</button>`;
+
+  const emojis=["🚀","🎮","👾","🐉","⭐","🏆","🦊","⚡"];
+  let cards=[];
+  let first=null;
+  let locked=false;
+  let moves=0;
+  let matched=0;
+  let timeout=null;
+
+  function start(){
+    if(timeout)clearTimeout(timeout);
+    cards=[...emojis,...emojis].sort(()=>Math.random()-0.5);
+    first=null;
+    locked=false;
+    moves=0;
+    matched=0;
+    $("memoryMoves").textContent="0";
+    $("memoryStatus").textContent="";
+    render();
+  }
+
+  function render(){
+    const board=$("memoryBoard");
+    board.innerHTML="";
+    cards.forEach((emoji,index)=>{
+      const button=document.createElement("button");
+      button.textContent="❔";
+      button.style.cssText=
+        "height:65px;border-radius:12px;background:#292044;border:1px solid #a66bff66;color:white;font-size:26px";
+      button.dataset.index=index;
+
+      button.addEventListener("click",()=>{
+        if(locked || button.dataset.done==="yes" || button.textContent!=="❔")return;
+
+        button.textContent=emoji;
+
+        if(first===null){
+          first={button,index};
+          return;
+        }
+
+        moves++;
+        $("memoryMoves").textContent=moves;
+
+        if(cards[first.index]===emoji){
+          button.dataset.done="yes";
+          first.button.dataset.done="yes";
+          matched+=2;
+          first=null;
+
+          if(matched===16){
+            $("memoryStatus").textContent="🏆 YOU WON! +20 XP";
+            addXP(20);
+          }
+        }else{
+          locked=true;
+          const previous=first.button;
+          timeout=setTimeout(()=>{
+            previous.textContent="❔";
+            button.textContent="❔";
+            first=null;
+            locked=false;
+          },750);
+        }
+      });
+
+      board.appendChild(button);
+    });
+  }
+
+  $("memoryReset").addEventListener("click",start);
+
+  cleanup=()=>{
+    if(timeout)clearTimeout(timeout);
+  };
+
+  start();
+}
+
+/* =========================
+   SNAKE MANIA
+========================= */
+
+function snake(){
+  const area=$("gameArea");
+  area.innerHTML=`
+    <p class="muted">Use arrow keys or swipe to control the snake.</p>
+    <h3 style="margin:10px">Score: <span id="snakeScore">0</span></h3>
+    <canvas id="snakeCanvas" width="320" height="320"
+      style="width:min(100%,320px);background:#091b20;border:1px solid #40edff66;border-radius:12px;touch-action:none"></canvas>
+    <p id="snakeMessage" class="muted" style="margin:12px">Collect the food!</p>
+    <button class="btn" id="snakeRestart">↻ RESTART</button>`;
+
+  const canvas=$("snakeCanvas");
+  const ctx=canvas.getContext("2d");
+  const size=16;
+  let snakeBody=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+  let direction={x:1,y:0};
+  let nextDirection={x:1,y:0};
+  let food={x:15,y:10};
+  let score=0;
+  let running=true;
+  let startX=0,startY=0;
+
+  function newFood(){
+    food={
+      x:Math.floor(Math.random()*20),
+      y:Math.floor(Math.random()*20)
+    };
+    if(snakeBody.some(p=>p.x===food.x&&p.y===food.y))newFood();
+  }
+
+  function draw(){
+    if(!running)return;
+
+    direction=nextDirection;
+    const head={
+      x:snakeBody[0].x+direction.x,
+      y:snakeBody[0].y+direction.y
+    };
+
+    if(head.x<0||head.x>=20||head.y<0||head.y>=20||
+       snakeBody.some(p=>p.x===head.x&&p.y===head.y)){
+      running=false;
+      $("snakeMessage").textContent="Game Over! Score: "+score;
+      saveBest("snake",score);
+      if(score>0)addXP(5);
+      return;
+    }
+
+    snakeBody.unshift(head);
+
+    if(head.x===food.x&&head.y===food.y){
+      score+=10;
+      $("snakeScore").textContent=score;
+      newFood();
+    }else{
+      snakeBody.pop();
+    }
+
+    ctx.fillStyle="#091b20";
+    ctx.fillRect(0,0,320,320);
+
+    ctx.fillStyle="#ff4fbd";
+    ctx.fillRect(food.x*size,food.y*size,size-2,size-2);
+
+    snakeBody.forEach((part,index)=>{
+      ctx.fillStyle=index===0?"#40edff":"#30b98d";
+      ctx.fillRect(part.x*size,part.y*size,size-2,size-2);
+    });
+  }
+
+  function setDirection(x,y){
+    if(x===-direction.x&&y===-direction.y)return;
+    nextDirection={x,y};
+  }
+
+  const keyHandler=e=>{
+    const keys={
+      ArrowUp:[0,-1],
+      ArrowDown:[0,1],
+      ArrowLeft:[-1,0],
+      ArrowRight:[1,0]
+    };
+    if(keys[e.key]){
+      e.preventDefault();
+      setDirection(...keys[e.key]);
+    }
+  };
+
+  const touchStart=e=>{
+    startX=e.changedTouches[0].clientX;
+    startY=e.changedTouches[0].clientY;
+  };
+
+  const touchEnd=e=>{
+    const dx=e.changedTouches[0].clientX-startX;
+    const dy=e.changedTouches[0].clientY-startY;
+    if(Math.abs(dx)>Math.abs(dy)){
+      if(Math.abs(dx)>15)setDirection(dx>0?1:-1,0);
+    }else{
+      if(Math.abs(dy)>15)setDirection(0,dy>0?1:-1);
+    }
+  };
+
+  document.addEventListener("keydown",keyHandler);
+  canvas.addEventListener("touchstart",touchStart,{passive:true});
+  canvas.addEventListener("touchend",touchEnd,{passive:true});
+
+  function start(){
+    if(timer)clearInterval(timer);
+    snakeBody=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+    direction={x:1,y:0};
+    nextDirection={x:1,y:0};
+    score=0;
+    running=true;
+    $("snakeScore").textContent="0";
+    $("snakeMessage").textContent="Collect the food!";
+    newFood();
+    draw();
+    timer=setInterval(draw,125);
+  }
+
+  $("snakeRestart").addEventListener("click",start);
+
+  cleanup=()=>{
+    running=false;
+    document.removeEventListener("keydown",keyHandler);
+    canvas.removeEventListener("touchstart",touchStart);
+    canvas.removeEventListener("touchend",touchEnd);
+  };
+
+  start();
+}
+
+/* PART 3 CONTINUES BELOW */
+  /* =========================
+    SPACE SHOOTER
+ ========================= */
+
 function space(){
-  const area = $("gameArea");
-  area.innerHTML = `
-    <p class="muted">🚀 Ship ని కదిలించి enemies ని shoot చేయి!</p>
-    <div style="text-align:center">
-      <canvas id="spaceCanvas" width="320" height="400"
-        style="width:min(100%,320px);background:#080819;border:1px solid #45416e;border-radius:16px;touch-action:none"></canvas>
-      <div style="display:flex;justify-content:center;gap:12px;margin-top:12px">
-        <button class="btn" id="fireBtn">🔥 FIRE</button>
-        <button class="btn" id="spaceRestart">↻ RESTART</button>
-      </div>
-      <h3>Score: <span id="spaceScore">0</span> | Lives: <span id="spaceLives">3</span></h3>
-      <p id="spaceMessage" class="muted">Move your ship and survive!</p>
-    </div>`;
+  $("gameArea").innerHTML=`
+    <p class="muted">🚀 Move your ship and shoot the enemies!</p>
+    <h3 style="margin:10px">Score: <span id="spaceScore">0</span> | Lives: <span id="spaceLives">3</span></h3>
+    <canvas id="spaceCanvas" width="320" height="400"
+      style="width:min(100%,320px);background:#080819;border:1px solid #40edff;border-radius:14px;touch-action:none"></canvas>
+    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn" id="fireBtn">🔥 FIRE</button>
+      <button class="btn" id="spaceRestart">↻ RESTART</button>
+    </div>
+    <p id="spaceMessage" class="muted" style="margin-top:10px">Move your ship and survive!</p>`;
 
-  const canvas = $("spaceCanvas");
-  const ctx = canvas.getContext("2d");
-  let ship = {x:145,y:345,w:30,h:25};
-  let bullets = [];
-  let enemies = [];
-  let score = 0;
-  let lives = 3;
-  let running = true;
-  let lastSpawn = 0;
-  let lastShot = 0;
-  let keys = {};
-  let animation;
+  const canvas=$("spaceCanvas");
+  const ctx=canvas.getContext("2d");
 
-  function drawShip(){
-    ctx.fillStyle = "#32eaff";
-    ctx.beginPath();
-    ctx.moveTo(ship.x+15,ship.y);
-    ctx.lineTo(ship.x,ship.y+25);
-    ctx.lineTo(ship.x+30,ship.y+25);
-    ctx.closePath();
-    ctx.fill();
+  let ship={x:145,y:350};
+  let bullets=[];
+  let enemies=[];
+  let score=0;
+  let lives=3;
+  let running=true;
+  let animation=0;
+  let lastSpawn=0;
+  let lastShot=0;
+  let keys={};
+
+  function shoot(){
+    if(!running || Date.now()-lastShot<260)return;
+    lastShot=Date.now();
+    bullets.push({x:ship.x+15,y:ship.y});
   }
 
   function finish(){
-    if(!running) return;
-    running = false;
+    if(!running)return;
+    running=false;
     cancelAnimationFrame(animation);
     saveBest("space",score);
-    if(score >= 10) addXP(10);
-    $("spaceMessage").textContent =
-      "Game Over! Final Score: "+score+" — Restart to play again.";
-  }
-
-  function spawnEnemy(){
-    enemies.push({
-      x:Math.random()*280,
-      y:-25,
-      size:20,
-      speed:1.2+Math.random()*1.2
-    });
+    if(score>=10)addXP(10);
+    $("spaceMessage").textContent="Game Over! Final Score: "+score;
   }
 
   function loop(time){
-    if(!running) return;
+    if(!running)return;
 
     ctx.clearRect(0,0,320,400);
 
-    ctx.fillStyle="rgba(255,255,255,.7)";
-    for(let i=0;i<20;i++){
-      const x=(i*47)%320;
-      const y=(i*83+Math.floor(time/40))%400;
+    /* stars */
+    ctx.fillStyle="#ffffff";
+    for(let i=0;i<24;i++){
+      const x=(i*53)%320;
+      const y=(i*79+Math.floor(time/45))%400;
       ctx.fillRect(x,y,2,2);
     }
 
-    if(keys.ArrowLeft || keys.a) ship.x-=4;
-    if(keys.ArrowRight || keys.d) ship.x+=4;
+    if(keys.ArrowLeft || keys.a)ship.x-=4;
+    if(keys.ArrowRight || keys.d)ship.x+=4;
     ship.x=Math.max(0,Math.min(290,ship.x));
 
-    drawShip();
+    /* player ship */
+    ctx.fillStyle="#40edff";
+    ctx.beginPath();
+    ctx.moveTo(ship.x+15,ship.y);
+    ctx.lineTo(ship.x,ship.y+28);
+    ctx.lineTo(ship.x+30,ship.y+28);
+    ctx.closePath();
+    ctx.fill();
 
+    /* bullets */
     bullets.forEach(b=>b.y-=7);
-    bullets=bullets.filter(b=>b.y>-10);
+    bullets=bullets.filter(b=>b.y>-15);
 
-    if(time-lastSpawn>900){
-      spawnEnemy();
+    bullets.forEach(b=>{
+      ctx.fillStyle="#ffd66b";
+      ctx.fillRect(b.x-2,b.y,4,12);
+    });
+
+    /* enemies */
+    if(time-lastSpawn>850){
+      enemies.push({
+        x:Math.random()*285,
+        y:-25,
+        speed:1.3+Math.random()*1.2,
+        dead:false
+      });
       lastSpawn=time;
     }
 
     enemies.forEach(e=>{
+      if(e.dead)return;
       e.y+=e.speed;
-      ctx.fillStyle="#ff45b7";
+
+      ctx.fillStyle="#ff4fbd";
       ctx.beginPath();
       ctx.arc(e.x+10,e.y+10,10,0,Math.PI*2);
       ctx.fill();
 
       bullets.forEach(b=>{
-        if(!e.dead && b.x>e.x && b.x<e.x+20 &&
-           b.y>e.y && b.y<e.y+20){
+        if(!b.dead && b.x>=e.x && b.x<=e.x+20 &&
+           b.y>=e.y && b.y<=e.y+20){
           e.dead=true;
           b.dead=true;
           score++;
@@ -1455,51 +1460,41 @@ function space(){
         e.dead=true;
         lives--;
         $("spaceLives").textContent=lives;
-        if(lives<=0) finish();
+        if(lives<=0)finish();
       }
 
-      if(e.y>400 && !e.dead){
+      if(!e.dead && e.y>400){
         e.dead=true;
         lives--;
         $("spaceLives").textContent=lives;
-        if(lives<=0) finish();
+        if(lives<=0)finish();
       }
     });
 
     enemies=enemies.filter(e=>!e.dead && e.y<420);
-
-    bullets.forEach(b=>{
-      if(!b.dead){
-        ctx.fillStyle="#ffd166";
-        ctx.fillRect(b.x-2,b.y,4,12);
-      }
-    });
     bullets=bullets.filter(b=>!b.dead);
 
-    if(running) animation=requestAnimationFrame(loop);
-  }
-
-  function shoot(){
-    if(!running) return;
-    const now=Date.now();
-    if(now-lastShot<250) return;
-    lastShot=now;
-    bullets.push({x:ship.x+15,y:ship.y});
+    if(running)animation=requestAnimationFrame(loop);
   }
 
   function moveShip(e){
     const rect=canvas.getBoundingClientRect();
-    ship.x=((e.clientX-rect.left)/rect.width)*320-15;
+    ship.x=(e.clientX-rect.left)/rect.width*320-15;
     ship.x=Math.max(0,Math.min(290,ship.x));
   }
 
   const pointerMove=e=>{
-    if(e.buttons || e.pointerType==="touch") moveShip(e);
+    if(e.buttons || e.pointerType==="touch")moveShip(e);
   };
+
   const keyDown=e=>{
     keys[e.key]=true;
-    if(e.key===" "){e.preventDefault();shoot();}
+    if(e.key===" "){
+      e.preventDefault();
+      shoot();
+    }
   };
+
   const keyUp=e=>{keys[e.key]=false;};
 
   canvas.addEventListener("pointerdown",moveShip);
@@ -1508,20 +1503,23 @@ function space(){
   document.addEventListener("keyup",keyUp);
   $("fireBtn").addEventListener("click",shoot);
 
-  $("spaceRestart").addEventListener("click",()=>{
+  function restart(){
     cancelAnimationFrame(animation);
-    ship={x:145,y:345,w:30,h:25};
+    ship={x:145,y:350};
     bullets=[];
     enemies=[];
     score=0;
     lives=3;
     running=true;
     lastSpawn=0;
+    lastShot=0;
     $("spaceScore").textContent="0";
     $("spaceLives").textContent="3";
-    $("spaceMessage").textContent="Good luck!";
+    $("spaceMessage").textContent="Game started! Good luck!";
     animation=requestAnimationFrame(loop);
-  });
+  }
+
+  $("spaceRestart").addEventListener("click",restart);
 
   cleanup=()=>{
     running=false;
@@ -1537,57 +1535,60 @@ function space(){
 
 
 /* =========================
-   PART 3 — PING PONG
+   NEON PING PONG
 ========================= */
 
 function ping(){
-  const area=$("gameArea");
-  area.innerHTML=`
-    <p class="muted">🏓 Paddle ని కదిలించి ball ని తిరిగి కొట్టు!</p>
-    <div style="text-align:center">
-      <canvas id="pingCanvas" width="320" height="360"
-        style="width:min(100%,320px);background:#071b24;border:1px solid #32eaff;border-radius:16px;touch-action:none"></canvas>
-      <h3>Score: <span id="pingScore">0</span></h3>
-      <button class="btn" id="pingRestart">↻ RESTART</button>
-      <p id="pingMessage" class="muted">Move your paddle with your finger.</p>
-    </div>`;
+  $("gameArea").innerHTML=`
+    <p class="muted">🏓 Move your paddle with your finger!</p>
+    <h3 style="margin:10px">Score: <span id="pingScore">0</span></h3>
+    <canvas id="pingCanvas" width="320" height="360"
+      style="width:min(100%,320px);background:#071b24;border:1px solid #40edff;border-radius:14px;touch-action:none"></canvas>
+    <button class="btn" id="pingRestart" style="margin-top:12px">↻ RESTART</button>
+    <p id="pingMessage" class="muted" style="margin-top:10px">Keep the ball alive!</p>`;
 
   const canvas=$("pingCanvas");
   const ctx=canvas.getContext("2d");
+
   let paddle={x:125,y:330,w:70,h:10};
   let ball={x:160,y:170,dx:2.5,dy:3,r:7};
   let score=0;
   let running=true;
-  let animation;
+  let animation=0;
 
-  function end(){
+  function finish(){
     if(!running)return;
     running=false;
     cancelAnimationFrame(animation);
     saveBest("ping",score);
     if(score>=5)addXP(10);
-    $("pingMessage").textContent="Game Over! Score: "+score;
+    $("pingMessage").textContent="Game Over! Final Score: "+score;
   }
 
   function draw(){
     if(!running)return;
 
     ctx.clearRect(0,0,320,360);
-
-    ctx.fillStyle="rgba(50,234,255,.13)";
+    ctx.fillStyle="#0c2830";
     ctx.fillRect(0,0,320,360);
 
     ball.x+=ball.dx;
     ball.y+=ball.dy;
 
-    if(ball.x-ball.r<0 || ball.x+ball.r>320) ball.dx*=-1;
-    if(ball.y-ball.r<0) ball.dy*=-1;
+    if(ball.x-ball.r<=0 || ball.x+ball.r>=320){
+      ball.dx*=-1;
+    }
+
+    if(ball.y-ball.r<=0){
+      ball.dy=Math.abs(ball.dy);
+    }
 
     if(ball.dy>0 &&
        ball.y+ball.r>=paddle.y &&
        ball.y-ball.r<=paddle.y+paddle.h &&
        ball.x>=paddle.x &&
        ball.x<=paddle.x+paddle.w){
+
       ball.dy=-Math.abs(ball.dy);
       ball.dx+=(ball.x-(paddle.x+paddle.w/2))*0.035;
       score++;
@@ -1595,17 +1596,20 @@ function ping(){
     }
 
     if(ball.y>360){
-      end();
+      finish();
       return;
     }
 
-    ctx.fillStyle="#32eaff";
+    ctx.fillStyle="#40edff";
+    ctx.shadowColor="#40edff";
+    ctx.shadowBlur=15;
     ctx.fillRect(paddle.x,paddle.y,paddle.w,paddle.h);
 
-    ctx.fillStyle="#ffd166";
+    ctx.fillStyle="#ffd66b";
     ctx.beginPath();
     ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
     ctx.fill();
+    ctx.shadowBlur=0;
 
     animation=requestAnimationFrame(draw);
   }
@@ -1623,16 +1627,18 @@ function ping(){
   canvas.addEventListener("pointerdown",move);
   canvas.addEventListener("pointermove",pointerMove);
 
-  $("pingRestart").addEventListener("click",()=>{
+  function restart(){
     cancelAnimationFrame(animation);
     paddle.x=125;
     ball={x:160,y:170,dx:2.5,dy:3,r:7};
     score=0;
     running=true;
     $("pingScore").textContent="0";
-    $("pingMessage").textContent="Game on!";
+    $("pingMessage").textContent="Game on! Good luck!";
     animation=requestAnimationFrame(draw);
-  });
+  }
+
+  $("pingRestart").addEventListener("click",restart);
 
   cleanup=()=>{
     running=false;
@@ -1646,20 +1652,17 @@ function ping(){
 
 
 /* =========================
-   PART 3 — 2048 PUZZLE
+   2048 PUZZLE
 ========================= */
 
 function game2048(){
-  const area=$("gameArea");
-  area.innerHTML=`
-    <p class="muted">🔢 Same numbers కలిపి 2048 tile సాధించు!</p>
-    <div style="max-width:340px;margin:auto;text-align:center">
-      <h3>Score: <span id="puzzleScore">0</span></h3>
-      <div id="puzzleBoard"
-        style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#292442;padding:8px;border-radius:14px;touch-action:none"></div>
-      <button class="btn" id="puzzleRestart" style="margin-top:12px">↻ NEW GAME</button>
-      <p id="puzzleMessage" class="muted">Use arrow keys or swipe.</p>
-    </div>`;
+  $("gameArea").innerHTML=`
+    <p class="muted">🔢 Combine matching numbers to reach 2048!</p>
+    <h3 style="margin:12px">Score: <span id="puzzleScore">0</span></h3>
+    <div id="puzzleBoard"
+      style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;max-width:340px;margin:auto;background:#292442;padding:8px;border-radius:14px;touch-action:none"></div>
+    <p id="puzzleMessage" class="muted" style="margin-top:12px">Swipe or use arrow keys.</p>
+    <button class="btn" id="puzzleRestart" style="margin-top:12px">↻ NEW GAME</button>`;
 
   const boardEl=$("puzzleBoard");
   let board=[];
@@ -1679,6 +1682,7 @@ function game2048(){
         if(board[r][c]===0)empty.push([r,c]);
       }
     }
+
     if(empty.length){
       const [r,c]=empty[Math.floor(Math.random()*empty.length)];
       board[r][c]=Math.random()<0.9?2:4;
@@ -1687,15 +1691,26 @@ function game2048(){
 
   function render(){
     boardEl.innerHTML="";
-    board.forEach(row=>row.forEach(value=>{
-      const tile=document.createElement("div");
-      tile.textContent=value||"";
-      tile.style.cssText=
-        "height:65px;display:grid;place-items:center;border-radius:9px;font-size:22px;font-weight:900;background:"+
-        (value?"#"+({2:"454064",4:"62508c",8:"a34f9b",16:"d65d8b",32:"e87964",64:"e99d4e",128:"d8bd54",256:"b8cf62",512:"78c98c",1024:"48bdb4",2048:"32eaff"}[value]||"9b5cff"):"#17172b")+
-        ";color:white";
-      boardEl.appendChild(tile);
-    }));
+
+    board.forEach(row=>{
+      row.forEach(value=>{
+        const tile=document.createElement("div");
+        tile.textContent=value||"";
+        const colors={
+          2:"#454064",4:"#62508c",8:"#a34f9b",
+          16:"#d65d8b",32:"#e87964",64:"#e99d4e",
+          128:"#d8bd54",256:"#b8cf62",512:"#78c98c",
+          1024:"#48bdb4",2048:"#32aeea"
+        };
+
+        tile.style.cssText=
+          "height:clamp(52px,17vw,70px);display:grid;place-items:center;border-radius:9px;font-size:clamp(17px,5vw,23px);font-weight:900;color:white;background:"+
+          (value?(colors[value]||"#9b5cff"):"#17172b");
+
+        boardEl.appendChild(tile);
+      });
+    });
+
     $("puzzleScore").textContent=score;
   }
 
@@ -1712,10 +1727,12 @@ function game2048(){
 
   function move(direction){
     if(won || !canMove())return;
+
     const before=JSON.stringify(board);
 
     for(let i=0;i<4;i++){
       let line=[];
+
       for(let j=0;j<4;j++){
         const r=direction==="up"?j:direction==="down"?3-j:i;
         const c=direction==="left"?j:direction==="right"?3-j:i;
@@ -1728,6 +1745,7 @@ function game2048(){
         if(line[j]===line[j+1]){
           line[j]*=2;
           score+=line[j];
+
           if(line[j]===2048)won=true;
           line.splice(j+1,1);
         }
@@ -1749,7 +1767,7 @@ function game2048(){
     saveBest("2048",score);
 
     if(won){
-      $("puzzleMessage").textContent="🎉 You reached 2048! +30 XP";
+      $("puzzleMessage").textContent="🎉 AMAZING! YOU REACHED 2048! +30 XP";
       addXP(30);
     }else if(!canMove()){
       $("puzzleMessage").textContent="Game Over! Start a new game.";
@@ -1763,6 +1781,7 @@ function game2048(){
       ArrowUp:"up",
       ArrowDown:"down"
     };
+
     if(map[e.key]){
       e.preventDefault();
       move(map[e.key]);
@@ -1779,7 +1798,9 @@ function game2048(){
     const t=e.changedTouches[0];
     const dx=t.clientX-startX;
     const dy=t.clientY-startY;
+
     if(Math.max(Math.abs(dx),Math.abs(dy))<25)return;
+
     if(Math.abs(dx)>Math.abs(dy)){
       move(dx>0?"right":"left");
     }else{
@@ -1787,19 +1808,19 @@ function game2048(){
     }
   };
 
-  document.addEventListener("keydown",keyHandler);
-  boardEl.addEventListener("touchstart",touchStart,{passive:true});
-  boardEl.addEventListener("touchend",touchEnd,{passive:true});
-
   function restart(){
     board=emptyBoard();
     score=0;
     won=false;
     addTile();
     addTile();
-    $("puzzleMessage").textContent="Use arrow keys or swipe.";
+    $("puzzleMessage").textContent="Swipe or use arrow keys.";
     render();
   }
+
+  document.addEventListener("keydown",keyHandler);
+  boardEl.addEventListener("touchstart",touchStart,{passive:true});
+  boardEl.addEventListener("touchend",touchEnd,{passive:true});
 
   $("puzzleRestart").addEventListener("click",restart);
 
@@ -1819,12 +1840,8 @@ function game2048(){
 
 function updateChallengeCount(){
   $("challengeCount").textContent=
-    getData("fv_daily_claimed","")===today?"1":"0";
+    getData("fv_daily_claimed","")===today?"1/1":"0/1";
 }
-
-$("claimChallenge").addEventListener("click",()=>{
-  setTimeout(updateChallengeCount,50);
-});
 
 updateChallengeCount();
 
