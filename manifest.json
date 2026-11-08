@@ -1,0 +1,10 @@
+{
+  "name": "FUNVERSE GAMES",
+  "short_name": "FunVerse",
+  "description": "Play fun games on FUNVERSE GAMES",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101020",
+  "theme_color": "#101020"
+}
