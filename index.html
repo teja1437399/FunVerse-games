@@ -24,14 +24,14 @@
 /* Performance + large play area */
 @media(max-width:900px){.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .game-screen.active{position:fixed;inset:0;z-index:80;width:100%;height:100dvh;max-width:none;margin:0;padding:calc(10px + env(safe-area-inset-top)) 12px calc(10px + env(safe-area-inset-bottom));background:radial-gradient(ellipse at top,#17254a,#080b1b 68%);display:flex;flex-direction:column;overflow:auto;overscroll-behavior:contain}
-.game-top{flex:0 0 auto;margin-bottom:8px}.game-top h2{font-size:clamp(14px,3vw,20px)}
+.game-top{flex:0 0 auto;margin-bottom:8px}.game-top h2{font-size:clamp(14px,3vw,20px)}.game-top-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.restart-game-btn{border-color:#278b77;color:#8fffd7;background:#12352f}
 .game-stage{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;padding:8px;border-radius:14px;overflow:auto}
 #gameArea{width:100%;min-height:0;display:flex;align-items:center;justify-content:center}
 .game-canvas{width:min(94vw, min(76vh, 760px));max-width:100%;max-height:100%;height:auto;aspect-ratio:1/1;object-fit:contain}
 #spaceCanvas,#pongCanvas{aspect-ratio:360/440;width:min(94vw, min(72vh, 680px))}
 .game-message{flex:0 0 auto;min-height:25px;padding:5px}.game-controls{flex:0 0 auto;margin-top:5px}.control-btn{min-height:42px;font-size:12px}
 .game-screen .hint{font-size:clamp(10px,2.4vw,13px)}
-@media(max-width:550px){.game-screen.active{padding:calc(7px + env(safe-area-inset-top)) 7px calc(7px + env(safe-area-inset-bottom))}.game-stage{padding:5px}.game-top{margin-bottom:5px}.game-screen .back-btn{padding:8px 10px}}
+@media(max-width:550px){.game-screen.active{padding:calc(7px + env(safe-area-inset-top)) 7px calc(7px + env(safe-area-inset-bottom))}.game-stage{padding:5px}.game-top{margin-bottom:5px}.game-screen .back-btn{padding:8px 9px;font-size:9px}.game-top-actions{gap:5px}}
 @media(prefers-reduced-motion:reduce){.game-screen.active{animation:none}}
 /* Consistent large play area for EVERY game on phones and tablets */
 .game-screen.active{height:100vh;height:100dvh;overflow:hidden;gap:6px}
@@ -50,6 +50,20 @@
 .game-screen .game-message{font-size:clamp(11px,2.5vw,15px)}
 .game-screen .control-btn{font-size:clamp(12px,2.8vw,16px);padding:12px 18px;min-height:46px}
 @media(max-width:550px){.game-screen.active{padding:calc(5px + env(safe-area-inset-top)) 5px calc(5px + env(safe-area-inset-bottom));gap:4px}.game-screen .game-stage{padding:3px}.game-screen .game-top{margin-bottom:2px}.game-screen #gameArea>div{padding:2px!important}.game-screen .game-canvas{width:min(96vw,calc(100dvh - 135px))!important}.game-screen #spaceCanvas,.game-screen #pongCanvas{width:min(96vw,calc((100dvh - 130px)*.818))!important}}
+
+/* Final responsive game fit: use the full safe viewport on phones and tablets. */
+.game-screen.active{width:100%;max-width:none;min-height:0;height:100dvh;height:100svh;inset:0;box-sizing:border-box;}
+.game-screen .game-stage{min-height:0;min-width:0;}
+.game-screen #gameArea{min-width:0;min-height:0;}
+.game-screen #gameArea>div{max-height:100%;}
+.game-screen .game-canvas{max-height:calc(100svh - 175px);}
+@media(max-width:550px){
+ .game-screen.active{padding-top:calc(5px + env(safe-area-inset-top));padding-bottom:calc(5px + env(safe-area-inset-bottom));}
+ .game-screen .game-stage{overflow:auto;}
+ .game-screen .game-canvas{max-height:calc(100svh - 155px);}
+ .game-screen .game-top h2{max-width:38vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+}
+
 </style>
 </head>
 <body>
@@ -70,7 +84,7 @@
 <section class="section" id="profile"><div class="section-head"><div><h2>PLAYER PROFILE</h2><p>Your gaming journey</p></div></div><div class="profile-panel"><div class="profile-top"><img class="avatar-large" id="profileAvatar" alt="Player avatar"><div><div class="profile-name" id="profileName">PLAYER</div><div class="profile-level" id="profileLevel">LEVEL 1 GAMER</div></div></div><div class="profile-actions"><button class="small-btn" onclick="openProfile()">EDIT PROFILE</button></div><div class="profile-details"><span id="levelTitle">ROOKIE</span><span id="levelBadge">★ LEVEL 1</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><div class="profile-details"><span id="xpText">0 XP</span><span id="nextXP">100 XP TO NEXT LEVEL</span></div></div></section>
 <section class="section" id="wallet"><div class="section-head"><div><h2>TEJ COIN WALLET</h2><p>Convert XP, collect daily coins and unlock items</p></div></div><div class="profile-panel"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div class="tej-coin">TEJ</div><div><div style="font:800 24px Orbitron;color:#ffd76a" id="coinBalance">0</div><small style="color:var(--muted)">TEJ COINS</small></div><div style="margin-left:auto"><button class="small-btn" onclick="convertXP()">CONVERT 1000 XP → 100 COINS</button></div></div><div class="profile-actions"><button class="small-btn" onclick="claimDailyCoins()">CLAIM DAILY 11 COINS</button><span id="streakText" style="font-size:11px;color:#ffd76a;align-self:center">🔥 0 DAY STREAK</span></div><p class="hint" style="text-align:left">Conversion is optional. Your remaining XP stays safe.</p></div><div class="profile-panel" style="margin-top:12px"><h3 style="margin-bottom:12px">COIN SHOP</h3><div id="coinShop" class="shop-grid"></div></div></section>
 <section class="section" id="challenge"><div class="section-head"><div><h2>DAILY CHALLENGE</h2><p>Complete your daily gaming goal</p></div></div><div class="challenge"><h3>PLAY ANY GAME</h3><p>Play one game today to complete your challenge and earn bonus XP.</p><div class="challenge-progress"><div id="challengeFill"></div></div><div class="profile-details"><span id="challengeText">0 / 1 completed</span><span>+50 BONUS XP</span></div></div></section>
-<section class="game-screen" id="gameScreen"><div class="game-top"><h2 id="gameTitle">GAME</h2><button class="back-btn" onclick="closeGame()">✕ EXIT GAME</button></div><div class="game-stage"><div id="gameArea"></div></div><div id="gameMessage" class="game-message"></div><div id="gameControls" class="game-controls"></div></section>
+<section class="game-screen" id="gameScreen"><div class="game-top"><h2 id="gameTitle">GAME</h2><div class="game-top-actions"><button class="back-btn restart-game-btn" onclick="restartCurrentGame()">↻ RESTART</button><button class="back-btn" onclick="closeGame()">✕ EXIT GAME</button></div></div><div class="game-stage"><div id="gameArea"></div></div><div id="gameMessage" class="game-message"></div><div id="gameControls" class="game-controls"></div></section>
 <footer><strong>FUNVERSE GAMES</strong><p style="margin-top:7px">Play · Explore · Challenge · Win</p><p style="margin-top:5px">© 2026 FUNVERSE GAMES</p></footer>
 </div>
 
@@ -126,6 +140,7 @@ function showMessage(m){$("gameMessage").textContent=m}
 function setControls(h){$("gameControls").innerHTML=h}
 function clearGame(){if(timer!==null){clearInterval(timer);clearTimeout(timer);timer=null}$("gameArea").innerHTML="";$("gameControls").innerHTML="";$("gameMessage").textContent=""}
 function startGame(n){clearGame();currentGame=n;$("gameScreen").classList.add("active");$("gameTitle").textContent=({tic:"TIC TAC TOE",snake:"SNAKE GAME",rps:"ROCK PAPER SCISSORS",memory:"MEMORY MATCH",space:"SPACE SHOOTER",pong:"PING PONG","2048":"2048 PUZZLE"})[n]||"GAME";$("gameScreen").scrollIntoView({behavior:"smooth",block:"start"});({tic,snake,rps,memory,space:spaceShooter,pong:pingPong,"2048":game2048})[n]?.()}
+function restartCurrentGame(){if(!currentGame)return;const name=currentGame;startGame(name);}
 function closeGame(){clearGame();currentGame="";$("gameScreen").classList.remove("active");$("games").scrollIntoView({behavior:"smooth"})}
 function finishGame(m,p=20){if(!currentGame)return;showMessage(m);addXP(p);completeDailyChallenge()}
 function makeButton(label,action){return `<button class="control-btn" onclick="${action}">${label}</button>`}
@@ -166,7 +181,7 @@ const fvShop=[{id:'frame',name:'Neon Avatar Frame',desc:'Unlock a cyan profile f
 function saveCoins(){localStorage.setItem('fv_coins',String(fvCoins));$('coinBalance').textContent=fvCoins}
 function renderShop(){$('coinShop').innerHTML=fvShop.map(x=>`<div class="shop-item"><b>${x.name}</b><small>${x.desc} · 🪙 ${x.price}</small><button class="small-btn" ${fvOwned.includes(x.id)?'disabled':''} onclick="buyShopItem('${x.id}')">${fvOwned.includes(x.id)?'OWNED':'BUY ITEM'}</button></div>`).join('')}
 function buyShopItem(id){const x=fvShop.find(a=>a.id===id);if(!x||fvOwned.includes(id))return;if(fvCoins<x.price){toast('Not enough TEJ Coins yet.');return}fvCoins-=x.price;fvOwned.push(id);localStorage.setItem('fv_owned',JSON.stringify(fvOwned));saveCoins();renderShop();toast(x.name+' unlocked!')}
-function convertXP(){if(totalXP<1000){toast('You need 1000 XP to convert.');return}if(!confirm('Convert 1000 XP into 100 TEJ Coins?'))return;totalXP-=1000;fvCoins+=100;localStorage.setItem('fv_xp',String(totalXP));saveCoins();updateProfile();toast('100 TEJ Coins added!')}
+function convertXP(){if(totalXP<100){toast('You need 100 XP to convert.');return}if(!confirm('Convert 100 XP into 100 TEJ Coins?'))return;totalXP-=100;fvCoins+=100;localStorage.setItem('fv_xp',String(totalXP));saveCoins();updateProfile();toast('100 TEJ Coins added!')}
 function claimDailyCoins(){const d=new Date(),key='fv_daily_coin_'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();if(localStorage.getItem(key)){toast('Daily reward already collected today.');return}localStorage.setItem(key,'yes');fvCoins+=11;saveCoins();let streak=Number(localStorage.getItem('fv_coin_streak')||0)+1;localStorage.setItem('fv_coin_streak',String(streak));$('streakText').textContent='🔥 '+streak+' DAY STREAK';toast('+11 TEJ Coins! Daily reward claimed.')}
 const oldUpdateProfile=updateProfile;
 updateProfile=function(){oldUpdateProfile();const lv=getLevel(),titles=['Rookie','Explorer','Challenger','Pro Gamer','Elite','Master','Legend','Funverse Champion'];const title=titles[Math.min(titles.length-1,Math.floor((lv-1)/5))];if($('levelTitle'))$('levelTitle').textContent=title.toUpperCase();if($('levelBadge'))$('levelBadge').textContent='★ LEVEL '+lv;if($('profileLevel'))$('profileLevel').textContent='LEVEL '+lv+' · '+title.toUpperCase()};
@@ -190,4 +205,4 @@ window.addEventListener("appinstalled",dismissInstall);
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(e=>console.log("Service worker:",e)));
 </script>
 </body>
-                                                                                                                                                                                                                                                                                     </html>
+ </html>
